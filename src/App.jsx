@@ -21,6 +21,7 @@ import ContactPage from './pages/ContactPage';
 import Services from './components/Services';
 import AboutWothoq from './components/AboutWothoq';
 import PageHeader from './components/PageHeader';
+import ScrollTop from './components/ScrollTop';
 
 function AppContent() {
     const location = useLocation();
@@ -50,6 +51,7 @@ function AppContent() {
     return (
         <>
             <Navbar />
+            <ScrollTop />
             {!isHomePage && <PageHeader title={getPageTitle()} />}
             <Routes>
                 <Route path="/" element={
