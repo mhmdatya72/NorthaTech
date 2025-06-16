@@ -6,11 +6,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ShareIcon from '@mui/icons-material/Share';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Link } from 'react-router-dom';
 
 const ServicesSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(6.25, 0),
     backgroundColor: '#ffffff',
     direction: 'rtl',
+    minHeight: '100vh',
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -116,14 +118,25 @@ const Services = ({ isFullPage }) => {
                 <Grid container spacing={4} alignItems="flex-start">
                     {!isFullPage && (
                         <Grid item xs={12} md={5}>
-                            <Box sx={{ pr: 2 }}>
+                            <Box sx={{
+                                pr: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 4,
+                                mt: '50px'
+                            }}>
                                 <SectionTitle variant="h2">
                                     خدماتنا
                                 </SectionTitle>
                                 <SectionDescription variant="body1">
                                     إذا كنت تريد تطوير تطبيقات الهواتف الذكية، أوتصميم موقعك الإلكتروني، أو تصميم هويتك التجارية فقد وصلت للمكان المناسب! فنحن ننتج كل ما سبق بجودة رائعة و محتوى جذاب لا يمكن نسيانه.
                                 </SectionDescription>
-                                <AllServicesButton variant="outlined" endIcon={<ArrowBackIcon />}>
+                                <AllServicesButton
+                                    component={Link}
+                                    to="/services"
+                                    variant="outlined"
+                                    endIcon={<ArrowBackIcon />}
+                                >
                                     جميع الخدمات
                                 </AllServicesButton>
                             </Box>

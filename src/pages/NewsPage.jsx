@@ -35,25 +35,25 @@ const newsArticles = [
         title: 'أحدث إنجازات وثوق في تطوير التطبيقات',
         date: '2023-10-26',
         summary: 'يسرنا أن نعلن عن إطلاق أحدث تطبيقاتنا المبتكرة التي تقدم حلولاً فريدة لعملائنا في مختلف القطاعات.',
-        image: 'https://via.placeholder.com/300x200?text=News+1',
+        image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
     },
     {
         title: 'وثوق للتقنيات تشارك في مؤتمر التقنية السنوي',
         date: '2023-09-15',
         summary: 'شارك فريقنا في المؤتمر التقني الأبرز لهذا العام، حيث عرضنا أحدث تقنياتنا وتبادلنا الخبرات مع رواد الصناعة.',
-        image: 'https://via.placeholder.com/300x200?text=News+2',
+        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
         title: 'نصائح لتحسين تواجدك الرقمي في 2023',
         date: '2023-08-01',
         summary: 'دليلك الشامل لتعزيز حضورك الرقمي وتحقيق أقصى استفادة من استراتيجيات التسويق الإلكتروني الحديثة.',
-        image: 'https://via.placeholder.com/300x200?text=News+3',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80',
     },
     {
         title: 'ورشة عمل مجانية: أساسيات تصميم المواقع',
         date: '2023-07-20',
         summary: 'ندعوكم لحضور ورشة عمل تفاعلية لتعلم أساسيات تصميم المواقع الإلكترونية والبدء في رحلتك الإبداعية.',
-        image: 'https://via.placeholder.com/300x200?text=News+4',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
 ];
 

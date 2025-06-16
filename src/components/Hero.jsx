@@ -25,6 +25,17 @@ const HeroSection = styled(Box)(({ theme }) => ({
     }
 }));
 
+const VideoBackground = styled('video')({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    opacity: 0.3,
+    zIndex: 0,
+});
+
 const HeroContent = styled(Container)(({ theme }) => ({
     position: 'relative',
     zIndex: 2,
@@ -52,10 +63,18 @@ const HeroImageWithText = styled(Box)(({ theme }) => ({
 const Hero = () => {
     return (
         <HeroSection>
+            <VideoBackground
+                autoPlay
+                muted
+                loop
+                playsInline
+            >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4" />
+            </VideoBackground>
             <HeroContent>
                 <HeroImageWithText>
                     <img
-                        src={imageUrls.heroTextWithRocket}
+                        src="https://wothoq.com/wp-content/uploads/2023/12/hero-text.png"
                         alt="رحلة تبدأ من الثقة"
                     />
                 </HeroImageWithText>

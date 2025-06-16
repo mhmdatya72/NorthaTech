@@ -45,27 +45,27 @@ const teamMembers = [
     {
         name: 'Abdulaziz Alenazi',
         role: 'CEO · founder',
-        avatar: 'https://via.placeholder.com/120',
+        avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
     },
     {
         name: 'Ahmad alsubie',
         role: 'Co-Founder, COO',
-        avatar: 'https://via.placeholder.com/120',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
     },
     {
         name: 'Tarek',
         role: 'Team Leader',
-        avatar: 'https://via.placeholder.com/120',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
     },
     {
         name: 'Muhaned',
         role: 'Account Manager',
-        avatar: 'https://via.placeholder.com/120',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
     },
     {
         name: 'Ahmed Mansour',
         role: 'Team Leader',
-        avatar: 'https://via.placeholder.com/120',
+        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
     },
 ];
 

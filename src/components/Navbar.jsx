@@ -8,10 +8,17 @@ import Logo from './Logo';
 
 const StyledAppBar = styled(AppBar)(({ theme, scrolled }) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    boxShadow: scrolled ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
+    boxShadow: scrolled
+        ? '0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.05)'
+        : '0 2px 10px rgba(0, 0, 0, 0.05)',
     transition: 'all 0.3s ease-in-out',
     backdropFilter: scrolled ? 'blur(8px)' : 'none',
     height: '80px',
+    '&:hover': {
+        boxShadow: scrolled
+            ? '0 6px 25px rgba(0, 0, 0, 0.15), 0 3px 15px rgba(0, 0, 0, 0.1)'
+            : '0 4px 15px rgba(0, 0, 0, 0.08)',
+    },
 }));
 
 const NavLink = styled(Button)(({ theme, active }) => ({

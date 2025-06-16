@@ -1,10 +1,21 @@
 import React from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import imageUrls from '../utils/imageUrls';
 
+const Line = styled(Box)(({ theme }) => ({
+    width: '66.66%',
+    height: '2px',
+    backgroundColor: 'white',
+    marginBottom: theme.spacing(3),
+    [theme.breakpoints.down('md')]: {
+        width: '100%',
+    },
+}));
+
 const AboutSection = styled(Box)(({ theme }) => ({
-    padding: theme.spacing(10, 0),
+    padding: theme.spacing(6, 0),
     background: 'linear-gradient(135deg, #1976d2 0%, #2196F3 100%)',
     position: 'relative',
     overflow: 'hidden',
@@ -35,7 +46,7 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const TextWrapper = styled(Box)(({ theme }) => ({
-    flex: 1,
+    flex: 2,
     paddingRight: theme.spacing(4),
     [theme.breakpoints.down('md')]: {
         paddingRight: 0,
@@ -61,18 +72,24 @@ const AboutWothoq = () => {
             <Container maxWidth="lg">
                 <ContentWrapper>
                     <TextWrapper>
-                        <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                        <Line />
+                        <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
                             وثوق للتقنيات
                         </Typography>
-                        <Typography variant="h6" paragraph>
+                        <Typography variant="h6" paragraph sx={{ color: 'white' }}>
                             وثوق للتقنيات هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
                         </Typography>
-                        <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                            للمزيد
-                        </Button>
+                        <Link to="/about" style={{ textDecoration: 'none' }}>
+                            <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                                للمزيد
+                            </Button>
+                        </Link>
                     </TextWrapper>
                     <ImageWrapper>
-                        <StyledImage src={imageUrls.aboutWothoqImage} alt="About Wothoq" />
+                        <StyledImage
+                            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="About Wothoq"
+                        />
                     </ImageWrapper>
                 </ContentWrapper>
             </Container>

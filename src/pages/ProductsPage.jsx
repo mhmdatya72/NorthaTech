@@ -57,24 +57,24 @@ const ProductImage = styled(CardMedia)(({ theme }) => ({
 
 const products = [
     {
-        name: 'منتج رقم 1',
-        description: 'وصف قصير للمنتج الأول، مع التركيز على مميزاته الرئيسية.',
-        image: 'https://via.placeholder.com/300x200?text=Product+1',
+        name: 'نظام إدارة المشاريع',
+        description: 'منصة متكاملة لإدارة المشاريع تمكنك من تتبع المهام، إدارة الفرق، وتنظيم الموارد بكفاءة عالية.',
+        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
-        name: 'منتج رقم 2',
-        description: 'وصف قصير للمنتج الثاني، يبرز فوائده واستخداماته.',
-        image: 'https://via.placeholder.com/300x200?text=Product+2',
+        name: 'منصة التجارة الإلكترونية',
+        description: 'حل متكامل للتجارة الإلكترونية يوفر تجربة تسوق سلسة مع إدارة مخزون متقدمة ونظام دفع آمن.',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
-        name: 'منتج رقم 3',
-        description: 'وصف قصير للمنتج الثالث، يتحدث عن الابتكار والجودة.',
-        image: 'https://via.placeholder.com/300x200?text=Product+3',
+        name: 'نظام إدارة المحتوى',
+        description: 'منصة قوية لإدارة المحتوى تمكنك من إنشاء وتنظيم ونشر المحتوى بسهولة مع واجهة تحكم سهلة الاستخدام.',
+        image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
-        name: 'منتج رقم 4',
-        description: 'وصف قصير للمنتج الرابع، يركز على الحلول التي يقدمها.',
-        image: 'https://via.placeholder.com/300x200?text=Product+4',
+        name: 'منصة التعلم الإلكتروني',
+        description: 'نظام متكامل للتعلم الإلكتروني يوفر محتوى تفاعلي، اختبارات، ومتابعة تقدم المتعلمين.',
+        image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
     },
 ];
 
