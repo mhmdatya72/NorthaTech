@@ -134,7 +134,7 @@ const Footer = () => {
         <Box sx={{ backgroundColor: '#000000' }}>
             <ContactCTABox>
                 <CTAText>
-                    لا تتردد في الاتصال بنا <br /> اطلب خدمتك الان من فريق وثوق
+                    لا تتردد في الاتصال بنا <br /> اطلب خدمتك الان من فريق NorthaTech
                 </CTAText>
                 <CTAButton
                     variant="contained"
@@ -147,11 +147,11 @@ const Footer = () => {
             <FooterContainer>
                 <Container maxWidth="lg" sx={{ backgroundColor: '#000000' }}>
                     <Grid container spacing={2} sx={{ mt: 2 }}>
-                        {/* Wothoq Technologies / Logo Section */}
+                        {/* NorthaTech / Logo Section */}
                         <Grid item xs={12} md={4}>
                             <Logo textColor="white" />
                             <Typography variant="body2" paragraph sx={{ mt: 3, mb: 3 }}>
-                                وثوق للتقنيات هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق.
+                                NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق.
                             </Typography>
                             <SocialIconsContainer>
                                 <IconButton href="#" target="_blank"><WhatsAppIcon /></IconButton>
@@ -167,7 +167,7 @@ const Footer = () => {
                                 روابط سريعة
                             </SectionTitle>
                             <FooterLink href="/">الرئيسية</FooterLink>
-                            <FooterLink href="/about">عن وثوق</FooterLink>
+                            <FooterLink href="/about">عن NorthaTech</FooterLink>
                             <FooterLink href="/services">الخدمات</FooterLink>
                             <FooterLink href="/projects">الأعمال</FooterLink>
                             <FooterLink href="/products">اكتشف المنتجات</FooterLink>
@@ -209,7 +209,7 @@ const Footer = () => {
                     </Grid>
                     <Box mt={8}>
                         <Typography variant="body2" color="text.secondary" align="center" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                            © {new Date().getFullYear()} All rights reserved by Wothoq technologies
+                            © {new Date().getFullYear()} All rights reserved by NorthaTech technologies
                         </Typography>
                     </Box>
                 </Container>

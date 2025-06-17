@@ -80,10 +80,10 @@ const AboutWothoq = () => {
                         <TextWrapper>
                             <Line />
                             <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
-                                وثوق للتقنيات
+                                NorthaTech
                             </Typography>
                             <Typography variant="h6" paragraph sx={{ color: 'white' }}>
-                                وثوق للتقنيات هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
+                                NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
                             </Typography>
                             <Link to="/about" style={{ textDecoration: 'none' }}>
                                 <Button variant="contained" color="primary" sx={{ mt: 2 }}>

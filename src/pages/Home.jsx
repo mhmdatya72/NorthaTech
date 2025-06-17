@@ -39,7 +39,7 @@ const Home = () => {
             <HeroSection>
                 <Container>
                     <Typography variant="h2" component="h1" gutterBottom>
-                        وثوق للتقنيات
+                        أهلاً بك في NorthaTech
                     </Typography>
                     <Typography variant="h5" paragraph>
                         شريكك الموثوق في عالم التقنية والرقمنة

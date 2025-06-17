@@ -116,7 +116,7 @@ const ZohoPartnerSection = () => {
                     <PartnerTextWrapper>
                         <TextRow>
                             <BlueText>
-                                وثوق للتقنيات شريك موثوق
+                                NorthaTech شريك موثوق
                             </BlueText>
                             <BlackText>
                                 لدى

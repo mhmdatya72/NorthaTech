@@ -26,7 +26,7 @@ const Logo = ({ textColor }) => {
     return (
         <LogoContainer component="a" href="/">
             <LogoText variant="h6" textColor={textColor}>
-                وثوق للتقنيات
+                NorthaTech
             </LogoText>
         </LogoContainer>
     );

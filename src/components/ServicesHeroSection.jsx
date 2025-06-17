@@ -73,8 +73,9 @@ const ServicesHeroSection = () => {
             <HeroContent>
                 <HeroText>
                     <img
-                        src={imageUrls.heroTextWithRocket} // Reusing the same image as Hero
-                        alt="وثوق للتقنيات"
+                        src={imageUrls.heroTextWithRocket}
+                        alt="NorthaTech"
+                        style={{ width: '100%', height: 'auto', display: 'block' }}
                     />
                 </HeroText>
                 <StatsContainer>

@@ -34,14 +34,14 @@ const NewsCard = styled(Card)(({ theme }) => ({
 const newsArticles = [
     {
         id: 'new-services',
-        title: 'أحدث إنجازات وثوق في تطوير التطبيقات',
+        title: 'أحدث إنجازات NorthaTech في تطوير التطبيقات',
         date: '2023-10-26',
         summary: 'يسرنا أن نعلن عن إطلاق أحدث تطبيقاتنا المبتكرة التي تقدم حلولاً فريدة لعملائنا في مختلف القطاعات.',
         image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
     },
     {
         id: 'zoho-partnership',
-        title: 'وثوق للتقنيات تشارك في مؤتمر التقنية السنوي',
+        title: 'NorthaTech تشارك في مؤتمر التقنية السنوي',
         date: '2023-09-15',
         summary: 'شارك فريقنا في المؤتمر التقني الأبرز لهذا العام، حيث عرضنا أحدث تقنياتنا وتبادلنا الخبرات مع رواد الصناعة.',
         image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
