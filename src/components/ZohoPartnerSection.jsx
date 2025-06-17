@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import AnimatedSection from './AnimatedSection';
 
 const PartnerContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#ffffff',
@@ -21,6 +22,7 @@ const PartnerContainer = styled(Box)(({ theme }) => ({
         textAlign: 'center',
         margin: theme.spacing(4, 0, 2, 0),
         padding: theme.spacing(2),
+        gap: theme.spacing(3),
     },
 }));
 
@@ -33,8 +35,9 @@ const PartnerTextWrapper = styled(Box)(({ theme }) => ({
     textAlign: 'right',
     [theme.breakpoints.down('md')]: {
         width: '100%',
-        alignItems: 'flex-end',
-        textAlign: 'right',
+        alignItems: 'center',
+        textAlign: 'center',
+        order: 2,
     },
 }));
 
@@ -46,9 +49,17 @@ const ZohoLogo = styled(Box)(({ theme }) => ({
         maxWidth: '400px',
         width: '100%',
         height: 'auto',
+        transition: 'transform 0.3s ease-in-out',
+        '&:hover': {
+            transform: 'scale(1.05)',
+        },
         [theme.breakpoints.down('md')]: {
-            maxWidth: '300px',
-            marginBottom: theme.spacing(3),
+            maxWidth: '250px',
+            marginBottom: theme.spacing(2),
+            order: 1,
+        },
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '200px',
         },
     },
 }));
@@ -61,6 +72,10 @@ const TextRow = styled(Box)(({ theme }) => ({
     gap: theme.spacing(2),
     width: '100%',
     textAlign: 'right',
+    [theme.breakpoints.down('md')]: {
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+    },
 }));
 
 const BlueText = styled(Typography)(({ theme }) => ({
@@ -69,8 +84,12 @@ const BlueText = styled(Typography)(({ theme }) => ({
     color: theme.palette.primary.light,
     width: 'auto',
     textAlign: 'right',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         fontSize: '1.5rem',
+        textAlign: 'center',
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.2rem',
     },
 }));
 
@@ -80,37 +99,43 @@ const BlackText = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.primary,
     width: 'auto',
     textAlign: 'right',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         fontSize: '1.5rem',
+        textAlign: 'center',
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.2rem',
     },
 }));
 
 const ZohoPartnerSection = () => {
     return (
         <Container maxWidth="lg">
-            <PartnerContainer>
-                <PartnerTextWrapper>
-                    <TextRow sx={{ width: '100%', justifyContent: 'flex-end' }}>
-                        <BlueText>
-                            وثوق للتقنيات شريك موثوق
-                        </BlueText>
-                        <BlackText>
-                            لدى
-                        </BlackText>
-                    </TextRow>
-                    <TextRow sx={{ width: '100%', justifyContent: 'flex-end' }}>
-                        <BlackText>
-                            زوهو لحلول الأعمال
-                        </BlackText>
-                    </TextRow>
-                </PartnerTextWrapper>
-                <ZohoLogo>
-                    <img
-                        src="https://wothoq.co/wp-content/uploads/2023/12/zoho.png"
-                        alt="Zoho Authorized Partner"
-                    />
-                </ZohoLogo>
-            </PartnerContainer>
+            <AnimatedSection direction="center" threshold={0.2}>
+                <PartnerContainer>
+                    <PartnerTextWrapper>
+                        <TextRow>
+                            <BlueText>
+                                وثوق للتقنيات شريك موثوق
+                            </BlueText>
+                            <BlackText>
+                                لدى
+                            </BlackText>
+                        </TextRow>
+                        <TextRow>
+                            <BlackText>
+                                زوهو لحلول الأعمال
+                            </BlackText>
+                        </TextRow>
+                    </PartnerTextWrapper>
+                    <ZohoLogo>
+                        <img
+                            src="https://wothoq.co/wp-content/uploads/2023/12/zoho.png"
+                            alt="Zoho Authorized Partner"
+                        />
+                    </ZohoLogo>
+                </PartnerContainer>
+            </AnimatedSection>
         </Container>
     );
 };

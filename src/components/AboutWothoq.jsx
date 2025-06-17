@@ -3,6 +3,7 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import imageUrls from '../utils/imageUrls';
+import AnimatedSection from './AnimatedSection';
 
 const Line = styled(Box)(({ theme }) => ({
     width: '66.66%',
@@ -64,6 +65,10 @@ const ImageWrapper = styled(Box)({
 const StyledImage = styled('img')({
     maxWidth: '100%',
     height: 'auto',
+    transition: 'transform 0.3s ease',
+    '&:hover': {
+        transform: 'scale(1.05)',
+    },
 });
 
 const AboutWothoq = () => {
@@ -71,26 +76,30 @@ const AboutWothoq = () => {
         <AboutSection>
             <Container maxWidth="lg">
                 <ContentWrapper>
-                    <TextWrapper>
-                        <Line />
-                        <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
-                            وثوق للتقنيات
-                        </Typography>
-                        <Typography variant="h6" paragraph sx={{ color: 'white' }}>
-                            وثوق للتقنيات هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
-                        </Typography>
-                        <Link to="/about" style={{ textDecoration: 'none' }}>
-                            <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                                للمزيد
-                            </Button>
-                        </Link>
-                    </TextWrapper>
-                    <ImageWrapper>
-                        <StyledImage
-                            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                            alt="About Wothoq"
-                        />
-                    </ImageWrapper>
+                    <AnimatedSection direction="right">
+                        <TextWrapper>
+                            <Line />
+                            <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
+                                وثوق للتقنيات
+                            </Typography>
+                            <Typography variant="h6" paragraph sx={{ color: 'white' }}>
+                                وثوق للتقنيات هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
+                            </Typography>
+                            <Link to="/about" style={{ textDecoration: 'none' }}>
+                                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                                    للمزيد
+                                </Button>
+                            </Link>
+                        </TextWrapper>
+                    </AnimatedSection>
+                    <AnimatedSection direction="left">
+                        <ImageWrapper>
+                            <StyledImage
+                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                alt="About Wothoq"
+                            />
+                        </ImageWrapper>
+                    </AnimatedSection>
                 </ContentWrapper>
             </Container>
         </AboutSection>
