@@ -129,7 +129,7 @@ const Navbar = () => {
     return (
         <>
             <StyledAppBar position="fixed" scrolled={scrolled}>
-                <Toolbar sx={{
+                <Toolbar dir={dir} sx={{
                     justifyContent: 'space-between',
                     padding: '0 50px',
                     height: '100%',
@@ -166,6 +166,31 @@ const Navbar = () => {
                                     item.name === 'التوظيف' ? 'careers' : item.name)}
                             </NavLink>
                         ))}
+                        <Button
+                            onClick={handleLanguageToggle}
+                            variant="contained"
+                            size="small"
+                            sx={{
+                                backgroundColor: '#111',
+                                color: '#fff',
+                                borderRadius: '999px',
+                                minWidth: 40,
+                                px: 2,
+                                ml: 1,
+                                fontWeight: 700,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                boxShadow: 'none',
+                                '&:hover': {
+                                    backgroundColor: '#222',
+                                    boxShadow: 'none',
+                                }
+                            }}
+                        >
+                            {i18n.language === 'ar' ? <span role="img" aria-label="English">🇬🇧</span> : <span role="img" aria-label="Arabic">🇸🇦</span>}
+                            {i18n.language === 'ar' ? 'EN' : 'AR'}
+                        </Button>
                         <ContactButton
                             component={RouterLink}
                             to="/contact"
@@ -174,9 +199,6 @@ const Navbar = () => {
                         >
                             {t('contact')}
                         </ContactButton>
-                        <Button variant="outlined" onClick={handleLanguageToggle} sx={{ ml: 2, minWidth: 40 }}>
-                            {t('language')}
-                        </Button>
                     </Box>
 
                     <Box sx={{

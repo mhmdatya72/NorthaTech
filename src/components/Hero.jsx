@@ -20,7 +20,7 @@ const GreenOverlay = styled(Box)({
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba(0, 128, 0, 0.35)', // green with transparency
+    background: 'rgba(25, 118, 210, 0.35)', // primary blue with transparency
     zIndex: 1,
     pointerEvents: 'none',
 });
@@ -77,6 +77,19 @@ const AnimatedLine = styled('h2')(({ theme }) => ({
     textShadow: '0 2px 8px rgba(0,0,0,0.3)',
     [theme.breakpoints.down('md')]: {
         fontSize: '1.2rem',
+    },
+}));
+
+const HighlightedBrand = styled('span')(({ theme }) => ({
+    background: 'linear-gradient(90deg, #1976d2 0%, #2196F3 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 900,
+    fontSize: '2.5rem',
+    letterSpacing: '1px',
+    textShadow: '0 2px 8px rgba(0,0,0,0.15)',
+    [theme.breakpoints.down('md')]: {
+        fontSize: '1.5rem',
     },
 }));
 
@@ -186,9 +199,23 @@ const Hero = () => {
             <GreenOverlay />
             <HeroContent>
                 <AnimatedLinesBox>
-                    {animatedLinesState.map((line, idx) => (
-                        <AnimatedLine key={idx}>{line}{idx === animatedLinesState.findIndex(l => l.length < line.length) ? <span style={{borderRight: '2px solid #fff', marginLeft: 2}}></span> : null}</AnimatedLine>
-                    ))}
+                    {animatedLinesState.map((line, idx) => {
+                        if (idx === 0) {
+                            // Highlight NorthaTech in the first line
+                            const match = line.match(/(NorthaTech)(.*)/);
+                            if (match) {
+                                return (
+                                    <AnimatedLine key={idx}>
+                                        <HighlightedBrand>NorthaTech</HighlightedBrand>{match[2]}
+                                        {idx === animatedLinesState.findIndex(l => l.length < line.length) ? <span style={{borderRight: '2px solid #fff', marginLeft: 2}}></span> : null}
+                                    </AnimatedLine>
+                                );
+                            }
+                        }
+                        return (
+                            <AnimatedLine key={idx}>{line}{idx === animatedLinesState.findIndex(l => l.length < line.length) ? <span style={{borderRight: '2px solid #fff', marginLeft: 2}}></span> : null}</AnimatedLine>
+                        );
+                    })}
                 </AnimatedLinesBox>
                 <HeroImageWithText>
                     {/* No image here as requested */}
