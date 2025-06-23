@@ -114,7 +114,15 @@ const Navbar = () => {
                     selected={location.pathname === item.path}
                     sx={{ fontSize: '0.95rem' }}
                 >
-                    <ListItemText primary={item.name} />
+                    <ListItemText primary={
+                        t(item.name === 'عن وثوق' ? 'about' :
+                          item.name === 'الرئيسية' ? 'home' :
+                          item.name === 'الخدمات' ? 'services' :
+                          item.name === 'الأعمال' ? 'projects' :
+                          item.name === 'اكتشف المنتجات' ? 'products' :
+                          item.name === 'الأخبار' ? 'news' :
+                          item.name === 'التوظيف' ? 'careers' : item.name)
+                    } />
                 </ListItem>
             ))}
             <ListItem
@@ -125,8 +133,35 @@ const Navbar = () => {
                 selected={location.pathname === '/contact'}
                 sx={{ fontSize: '0.95rem' }}
             >
-                <ListItemText primary="تواصل معنا" />
+                <ListItemText primary={t('contact')} />
             </ListItem>
+            {/* زر تغيير اللغة في الناف بار الرئيسي
+            <Button
+                onClick={handleLanguageToggle}
+                variant="contained"
+                size="small"
+                sx={{
+                    backgroundColor: '#111',
+                    color: '#fff',
+                    borderRadius: '999px',
+                    minWidth: 40,
+                    px: 2,
+                    ml: 1,
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    boxShadow: 'none',
+                    '&:hover': {
+                        backgroundColor: '#222',
+                        boxShadow: 'none',
+                    }
+                }}
+            >
+                {i18n.language === 'ar' ? <span role="img" aria-label="English">🇬🇧</span> : <span role="img" aria-label="Arabic">🇸🇦</span>}
+                {i18n.language === 'ar' ? 'EN' : 'AR'}
+            </Button>
+            */}
         </List>
     );
 
@@ -171,31 +206,6 @@ const Navbar = () => {
                                     item.name === 'التوظيف' ? 'careers' : item.name)}
                             </NavLink>
                         ))}
-                        <Button
-                            onClick={handleLanguageToggle}
-                            variant="contained"
-                            size="small"
-                            sx={{
-                                backgroundColor: '#111',
-                                color: '#fff',
-                                borderRadius: '999px',
-                                minWidth: 40,
-                                px: 2,
-                                ml: 1,
-                                fontWeight: 700,
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '4px',
-                                boxShadow: 'none',
-                                '&:hover': {
-                                    backgroundColor: '#222',
-                                    boxShadow: 'none',
-                                }
-                            }}
-                        >
-                            {i18n.language === 'ar' ? <span role="img" aria-label="English">🇬🇧</span> : <span role="img" aria-label="Arabic">🇸🇦</span>}
-                            {i18n.language === 'ar' ? 'EN' : 'AR'}
-                        </Button>
                         <ContactButton
                             component={RouterLink}
                             to="/contact"

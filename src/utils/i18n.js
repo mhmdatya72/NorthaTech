@@ -13,7 +13,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('lang') || (navigator.language.startsWith('ar') ? 'ar' : 'en'),
+    lng: localStorage.getItem('lang') || 'ar',
     fallbackLng: 'ar',
     interpolation: {
       escapeValue: false,
