@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Projects from '../components/Projects'; // Import the existing Projects component
+import { useTranslation } from 'react-i18next';
 
 const ProjectsPageContainer = styled(Box)(({ theme }) => ({
     paddingTop: theme.spacing(4),
@@ -22,14 +23,15 @@ const PageTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const ProjectsPage = () => {
+    const { t, i18n } = useTranslation();
     return (
-        <ProjectsPageContainer>
+        <ProjectsPageContainer dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <PageTitle variant="h1">
-                    بعض أعمالنا
+                    {t('projectspage_title', 'بعض أعمالنا')}
                 </PageTitle>
                 <Typography variant="body1" align="center" paragraph sx={{ maxWidth: '800px', margin: '0 auto 60px' }}>
-                    استعرض مجموعتنا الواسعة من المشاريع التي تعكس خبرتنا وإبداعنا في مختلف المجالات.
+                    {t('projectspage_desc', 'استعرض مجموعتنا الواسعة من المشاريع التي تعكس خبرتنا وإبداعنا في مختلف المجالات.')}
                 </Typography>
                 <Projects /> {/* The existing Projects component will render the project cards */}
             </Container>

@@ -4,12 +4,13 @@ import { styled } from '@mui/material/styles';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import { useTranslation } from 'react-i18next';
 // import Map from './Map';
 
 const ContactSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(10, 0),
     backgroundColor: '#f8f9fa',
-    direction: 'rtl',
+    direction: theme.direction,
 }));
 
 const ContactForm = styled(Paper)(({ theme }) => ({
@@ -37,17 +38,18 @@ const ContactInfo = styled(Box)(({ theme }) => ({
 // }));
 
 const Contact = () => {
+    const { t, i18n } = useTranslation();
     return (
-        <ContactSection>
+        <ContactSection dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Typography variant="h3" component="h1" gutterBottom align="center" sx={{ mb: 6, fontWeight: 'bold' }}>
-                    تواصل معنا
+                    {t('contact_title', 'تواصل معنا')}
                 </Typography>
 
                 {/* Contact Information Section */}
                 <Box sx={{ mb: 6 }}>
                     <Typography variant="h5" gutterBottom sx={{ mb: 4, fontWeight: 'bold', textAlign: 'center' }}>
-                        معلومات التواصل
+                        {t('contact_info', 'معلومات التواصل')}
                     </Typography>
                     <Grid container spacing={4} justifyContent="center">
                         <Grid item xs={12} sm={4}>
@@ -55,10 +57,10 @@ const Contact = () => {
                                 <LocationOnIcon fontSize="large" />
                                 <Box>
                                     <Typography variant="h6" gutterBottom>
-                                        العنوان
+                                        {t('contact_address_title', 'العنوان')}
                                     </Typography>
                                     <Typography variant="body1" color="text.secondary">
-                                        المملكة العربية السعودية، الرياض
+                                        {t('contact_address', 'المملكة العربية السعودية، الرياض')}
                                     </Typography>
                                 </Box>
                             </ContactInfo>
@@ -68,10 +70,10 @@ const Contact = () => {
                                 <PhoneIcon fontSize="large" />
                                 <Box>
                                     <Typography variant="h6" gutterBottom>
-                                        رقم الهاتف
+                                        {t('contact_phone_title', 'رقم الهاتف')}
                                     </Typography>
                                     <Typography variant="body1" color="text.secondary">
-                                        +966 11 123 4567
+                                        {t('contact_phone', '+966 11 123 4567')}
                                     </Typography>
                                 </Box>
                             </ContactInfo>
@@ -81,10 +83,10 @@ const Contact = () => {
                                 <EmailIcon fontSize="large" />
                                 <Box>
                                     <Typography variant="h6" gutterBottom>
-                                        البريد الإلكتروني
+                                        {t('contact_email_title', 'البريد الإلكتروني')}
                                     </Typography>
                                     <Typography variant="body1" color="text.secondary">
-                                        info@wothoq.com
+                                        {t('contact_email', 'info@wothoq.com')}
                                     </Typography>
                                 </Box>
                             </ContactInfo>
@@ -97,13 +99,13 @@ const Contact = () => {
                     <Grid item xs={12}>
                         <ContactForm>
                             <Typography variant="h5" gutterBottom sx={{ mb: 4, fontWeight: 'bold' }}>
-                                أرسل لنا رسالة
+                                {t('contact_form_title', 'أرسل لنا رسالة')}
                             </Typography>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         fullWidth
-                                        label="الاسم"
+                                        label={t('contact_form_name', 'الاسم')}
                                         variant="outlined"
                                         required
                                     />
@@ -111,7 +113,7 @@ const Contact = () => {
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         fullWidth
-                                        label="رقم الجوال"
+                                        label={t('contact_form_phone', 'رقم الجوال')}
                                         variant="outlined"
                                         required
                                     />
@@ -119,7 +121,7 @@ const Contact = () => {
                                 <Grid item xs={12}>
                                     <TextField
                                         fullWidth
-                                        label="البريد الإلكتروني"
+                                        label={t('contact_form_email', 'البريد الإلكتروني')}
                                         variant="outlined"
                                         required
                                         type="email"
@@ -128,7 +130,7 @@ const Contact = () => {
                                 <Grid item xs={12}>
                                     <TextField
                                         fullWidth
-                                        label="الموضوع"
+                                        label={t('contact_form_subject', 'الموضوع')}
                                         variant="outlined"
                                         required
                                     />
@@ -136,7 +138,7 @@ const Contact = () => {
                                 <Grid item xs={12}>
                                     <TextField
                                         fullWidth
-                                        label="الرسالة"
+                                        label={t('contact_form_message', 'الرسالة')}
                                         variant="outlined"
                                         required
                                         multiline
@@ -156,7 +158,7 @@ const Contact = () => {
                                             fontSize: '1.1rem',
                                         }}
                                     >
-                                        إرسال الرسالة
+                                        {t('contact_form_send', 'إرسال الرسالة')}
                                     </Button>
                                 </Grid>
                             </Grid>

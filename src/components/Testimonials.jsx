@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import imageUrls from '../utils/imageUrls';
+import { useTranslation } from 'react-i18next';
 
 const TestimonialsSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
@@ -62,98 +63,99 @@ const NavigationButton = styled(IconButton)(({ theme }) => ({
 
 const testimonials = [
     {
-        name: 'أحمد محمد',
-        position: 'مدير شركة التقنية',
-        text: 'خدمة ممتازة وفريق عمل محترف. ساعدونا في تطوير أعمالنا بشكل كبير. تعاملنا مع وثوق كان تجربة مميزة حقاً، حيث قدمت لنا حلولاً مبتكرة ساعدت في نمو أعمالنا بشكل ملحوظ. نتمنى لهم المزيد من التقدم والنجاح.',
+        nameKey: 'testimonial_ahmed_name',
+        positionKey: 'testimonial_ahmed_position',
+        textKey: 'testimonial_ahmed_text',
         avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
     },
     {
-        name: 'سارة أحمد',
-        position: 'رئيس قسم التسويق',
-        text: 'تجربة رائعة مع وثوق. قدمت لنا حلولاً مبتكرة ساعدت في نمو أعمالنا. فريق العمل يتميز بالاحترافية العالية والالتزام بتقديم أفضل الخدمات. نوصي بالتعامل معهم بشدة.',
+        nameKey: 'testimonial_sara_name',
+        positionKey: 'testimonial_sara_position',
+        textKey: 'testimonial_sara_text',
         avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
     },
     {
-        name: 'خالد عبدالله',
-        position: 'مؤسس شركة ناشئة',
-        text: 'شركة موثوقة ومهنية. ساعدتنا في تحقيق أهدافنا باحترافية عالية. تعاملنا معهم كان مثالياً من حيث الالتزام بالمواعيد وجودة العمل. نعتبرهم شريكاً استراتيجياً في نجاحنا.',
+        nameKey: 'testimonial_khaled_name',
+        positionKey: 'testimonial_khaled_position',
+        textKey: 'testimonial_khaled_text',
         avatar: 'https://randomuser.me/api/portraits/men/67.jpg'
     },
     {
-        name: 'نورة السعيد',
-        position: 'مديرة تطوير الأعمال',
-        text: 'تعاملنا مع وثوق كان تجربة مميزة. فريق عمل محترف وخدمة متميزة. ساعدونا في تطوير استراتيجياتنا وتحسين أدائنا بشكل كبير. ننصح بالتعامل معهم لكل من يبحث عن جودة عالية.',
+        nameKey: 'testimonial_noura_name',
+        positionKey: 'testimonial_noura_position',
+        textKey: 'testimonial_noura_text',
         avatar: 'https://randomuser.me/api/portraits/women/68.jpg'
     },
     {
-        name: 'محمد علي',
-        position: 'المدير التنفيذي',
-        text: 'شركة وثوق تميزت بتقديم خدمات متميزة ساعدت في تطوير أعمالنا بشكل كبير. فريق العمل يتميز بالاحترافية والالتزام. نعتبرهم شريكاً أساسياً في نجاحنا.',
+        nameKey: 'testimonial_mohamed_name',
+        positionKey: 'testimonial_mohamed_position',
+        textKey: 'testimonial_mohamed_text',
         avatar: 'https://randomuser.me/api/portraits/men/75.jpg'
     },
     {
-        name: 'فاطمة حسن',
-        position: 'مديرة العمليات',
-        text: 'تجربة رائعة مع وثوق. ساعدونا في تحسين عملياتنا وتطوير استراتيجياتنا. فريق العمل يتميز بالاحترافية العالية والالتزام بتقديم أفضل الخدمات.',
+        nameKey: 'testimonial_fatima_name',
+        positionKey: 'testimonial_fatima_position',
+        textKey: 'testimonial_fatima_text',
         avatar: 'https://randomuser.me/api/portraits/women/90.jpg'
     },
     {
-        name: 'عمر خالد',
-        position: 'رئيس قسم التطوير',
-        text: 'شركة وثوق قدمت لنا حلولاً مبتكرة ساعدت في تطوير أعمالنا. فريق العمل يتميز بالاحترافية والالتزام. نوصي بالتعامل معهم لكل من يبحث عن جودة عالية.',
+        nameKey: 'testimonial_omar_name',
+        positionKey: 'testimonial_omar_position',
+        textKey: 'testimonial_omar_text',
         avatar: 'https://randomuser.me/api/portraits/men/91.jpg'
     },
     {
-        name: 'ليلى محمود',
-        position: 'مديرة التسويق الرقمي',
-        text: 'تعاملنا مع وثوق كان تجربة مميزة. ساعدونا في تطوير استراتيجياتنا التسويقية وتحسين أدائنا. فريق العمل يتميز بالاحترافية العالية.',
+        nameKey: 'testimonial_layla_name',
+        positionKey: 'testimonial_layla_position',
+        textKey: 'testimonial_layla_text',
         avatar: 'https://randomuser.me/api/portraits/women/92.jpg'
     },
     {
-        name: 'ياسر أحمد',
-        position: 'مدير المشاريع',
-        text: 'شركة وثوق تميزت بتقديم خدمات متميزة ساعدت في تطوير مشاريعنا. فريق العمل يتميز بالاحترافية والالتزام. نعتبرهم شريكاً أساسياً في نجاحنا.',
+        nameKey: 'testimonial_yasser_name',
+        positionKey: 'testimonial_yasser_position',
+        textKey: 'testimonial_yasser_text',
         avatar: 'https://randomuser.me/api/portraits/men/93.jpg'
     },
     {
-        name: 'منى علي',
-        position: 'مديرة الابتكار',
-        text: 'تجربة رائعة مع وثوق. ساعدونا في تطوير حلول مبتكرة لتحسين أعمالنا. فريق العمل يتميز بالاحترافية العالية والالتزام بتقديم أفضل الخدمات.',
+        nameKey: 'testimonial_mona_name',
+        positionKey: 'testimonial_mona_position',
+        textKey: 'testimonial_mona_text',
         avatar: 'https://randomuser.me/api/portraits/women/94.jpg'
     },
     {
-        name: 'دلال',
-        position: 'رائدة أعمال',
-        text: 'كان عندي فكرة عمل تطبيق وتواصلت معهم، واحمد الله ان يسرهم لي، نصائحهم كانت من ذهب ونفعوني وارشدوني بأشياء كثير انارت لي طريقي. وعلى مدى شهرين وكل سؤال لدي كانوا يجيبون عليه و بصدر رحب .. شكرا لكم بحجم السماء',
+        nameKey: 'testimonial_dalal_name',
+        positionKey: 'testimonial_dalal_position',
+        textKey: 'testimonial_dalal_text',
         avatar: 'https://randomuser.me/api/portraits/women/95.jpg'
     },
     {
-        name: 'أبو ابتسام',
-        position: 'مدير شركة تقنية',
-        text: 'صراحة من حكم تجربة معهم - جدا متميزين فاهمين الشغله - تعامل جدا راقي وبشكل احترافي -يساعدونك على تطوير الفكره والبحث عن الأشياء المميزه انصح الجميع بالتعامل معهم',
+        nameKey: 'testimonial_abuibtisam_name',
+        positionKey: 'testimonial_abuibtisam_position',
+        textKey: 'testimonial_abuibtisam_text',
         avatar: 'https://randomuser.me/api/portraits/men/96.jpg'
     },
     {
-        name: 'ماجد',
-        position: 'مؤسس شركة ناشئة',
-        text: 'تجربة كانت رائعة قيادة المشروع كانت سلسة ومبدعة، يعيش الإخوة في وثق معك تفاصيل المشروع ، ويطبقون مفهوم تحسين تجربة المستخدم بتفاصيلها، ويتجاوزون مهمة إنشاء الموقع إلى مهام أخرى خارج متطلبات العقد، إضافة إلى أن الأسعار ممتازة مقارنة بالخدمة المقدمة.',
+        nameKey: 'testimonial_majed_name',
+        positionKey: 'testimonial_majed_position',
+        textKey: 'testimonial_majed_text',
         avatar: 'https://randomuser.me/api/portraits/men/97.jpg'
     },
     {
-        name: 'نوف',
-        position: 'مديرة مشاريع رقمية',
-        text: 'تعاملت مع وثوق في عدة مشاريع وكانت تجربة مميزة في كل مرة. فريق العمل يتميز بالاحترافية العالية والالتزام بتقديم أفضل الحلول. ساعدونا في تطوير أعمالنا بشكل كبير ونحن سعداء بالتعاون معهم.',
+        nameKey: 'testimonial_nouf_name',
+        positionKey: 'testimonial_nouf_position',
+        textKey: 'testimonial_nouf_text',
         avatar: 'https://randomuser.me/api/portraits/women/98.jpg'
     },
     {
-        name: 'عبدالله',
-        position: 'مدير تطوير الأعمال',
-        text: 'شركة وثوق تميزت بتقديم خدمات متميزة ساعدت في تطوير أعمالنا بشكل كبير. فريق العمل يتميز بالاحترافية والالتزام. نعتبرهم شريكاً أساسياً في نجاحنا وننصح بالتعامل معهم.',
+        nameKey: 'testimonial_abdullah_name',
+        positionKey: 'testimonial_abdullah_position',
+        textKey: 'testimonial_abdullah_text',
         avatar: 'https://randomuser.me/api/portraits/men/99.jpg'
     }
 ];
 
 const Testimonials = () => {
+    const { t, i18n } = useTranslation();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
@@ -219,7 +221,7 @@ const Testimonials = () => {
                         mb: 6
                     }}
                 >
-                    <Box component="span" sx={{ color: '#1976d2' }}>آراء </Box> العملاء
+                    <Box component="span" sx={{ color: '#1976d2' }}>{t('testimonials_title_blue', 'آراء ')}</Box>{t('testimonials_title_black', 'العملاء')}
                 </Typography>
                 <Box sx={{ position: 'relative', width: '100%', maxWidth: '1000px' }}>
                     <NavigationButton
@@ -232,21 +234,21 @@ const Testimonials = () => {
                         {getCurrentTestimonials().map((testimonial, index) => (
                             <Grid item xs={12} md={6} key={index} sx={{ maxWidth: '500px' }}>
                                 <TestimonialCard>
-                                    <StyledAvatar src={testimonial.avatar} alt={testimonial.name} />
+                                    <StyledAvatar src={testimonial.avatar} alt={t(testimonial.nameKey)} />
                                     <CardContent>
                                         <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                                            {testimonial.name}
+                                            {t(testimonial.nameKey)}
                                         </Typography>
                                         <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                                            {testimonial.position}
+                                            {t(testimonial.positionKey)}
                                         </Typography>
                                         <Typography variant="body1" sx={{
                                             mt: 2,
                                             lineHeight: 1.8,
-                                            textAlign: 'right',
+                                            textAlign: i18n.language === 'ar' ? 'right' : 'left',
                                             fontSize: '1.1rem'
                                         }}>
-                                            {testimonial.text}
+                                            {t(testimonial.textKey)}
                                         </Typography>
                                     </CardContent>
                                 </TestimonialCard>

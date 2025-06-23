@@ -2,11 +2,12 @@ import React from 'react';
 import { Box, Container, Typography, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AnimatedSection from '../../components/AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
-const ProjectContainer = styled(Box)(({ theme }) => ({
+const ProjectContainer = styled(Box)(({ theme, dir }) => ({
     padding: theme.spacing(8, 0),
     backgroundColor: '#f5f5f5',
-    direction: 'rtl',
+    direction: dir,
 }));
 
 const ProjectImage = styled('img')(({ theme }) => ({
@@ -33,33 +34,35 @@ const FeatureCard = styled(Paper)(({ theme }) => ({
 }));
 
 const TaskManagementApp = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     const features = [
         {
-            title: 'إدارة المهام المتقدمة',
-            description: 'نظام متكامل لإدارة المهام مع إمكانية تحديد الأولويات وتتبع التقدم وإدارة المواعيد النهائية.',
+            title: t('taskapp_feature1_title', 'إدارة المهام المتقدمة'),
+            description: t('taskapp_feature1_desc', 'نظام متكامل لإدارة المهام مع إمكانية تحديد الأولويات وتتبع التقدم وإدارة المواعيد النهائية.'),
             image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
         },
         {
-            title: 'التعاون في الوقت الفعلي',
-            description: 'مشاركة المهام والتعليقات والتحديثات مع فريق العمل في الوقت الفعلي.',
+            title: t('taskapp_feature2_title', 'التعاون في الوقت الفعلي'),
+            description: t('taskapp_feature2_desc', 'مشاركة المهام والتعليقات والتحديثات مع فريق العمل في الوقت الفعلي.'),
             image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         },
         {
-            title: 'تقارير وإحصائيات',
-            description: 'تقارير تفصيلية وإحصائيات عن أداء الفريق وتقدم المشاريع.',
+            title: t('taskapp_feature3_title', 'تقارير وإحصائيات'),
+            description: t('taskapp_feature3_desc', 'تقارير تفصيلية وإحصائيات عن أداء الفريق وتقدم المشاريع.'),
             image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         },
     ];
 
     return (
-        <ProjectContainer>
+        <ProjectContainer dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <AnimatedSection direction="right">
-                    <Typography variant="h2" component="h1" gutterBottom align="right">
-                        تطبيق إدارة المهام
+                    <Typography variant="h2" component="h1" gutterBottom align={isArabic ? 'right' : 'left'}>
+                        {t('taskapp_title', 'تطبيق إدارة المهام')}
                     </Typography>
-                    <Typography variant="h5" color="text.secondary" paragraph align="right">
-                        تطبيق متكامل لإدارة المهام والمشاريع مع واجهة مستخدم سهلة الاستخدام وميزات متقدمة للتتبع والتعاون
+                    <Typography variant="h5" color="text.secondary" paragraph align={isArabic ? 'right' : 'left'}>
+                        {t('taskapp_desc', 'تطبيق متكامل لإدارة المهام والمشاريع مع واجهة مستخدم سهلة الاستخدام وميزات متقدمة للتتبع والتعاون')}
                     </Typography>
                 </AnimatedSection>
 
@@ -67,14 +70,14 @@ const TaskManagementApp = () => {
                     <AnimatedSection direction="center">
                         <ProjectImage
                             src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-                            alt="تطبيق إدارة المهام"
+                            alt={t('taskapp_title', 'تطبيق إدارة المهام')}
                         />
                     </AnimatedSection>
                 </Box>
 
                 <AnimatedSection direction="left">
-                    <Typography variant="h4" component="h2" gutterBottom align="right">
-                        المميزات الرئيسية
+                    <Typography variant="h4" component="h2" gutterBottom align={isArabic ? 'right' : 'left'}>
+                        {t('taskapp_features_title', 'المميزات الرئيسية')}
                     </Typography>
                 </AnimatedSection>
 
@@ -95,10 +98,10 @@ const TaskManagementApp = () => {
                                             }}
                                         />
                                     </Box>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
                                         {feature.title}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         {feature.description}
                                     </Typography>
                                 </FeatureCard>
@@ -109,36 +112,36 @@ const TaskManagementApp = () => {
 
                 <Box sx={{ mt: 6 }}>
                     <AnimatedSection direction="up">
-                        <Typography variant="h4" component="h2" gutterBottom align="right">
-                            التقنيات المستخدمة
+                        <Typography variant="h4" component="h2" gutterBottom align={isArabic ? 'right' : 'left'}>
+                            {t('taskapp_tech_title', 'التقنيات المستخدمة')}
                         </Typography>
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الواجهة الأمامية
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('taskapp_tech_frontend', 'الواجهة الأمامية')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         React.js, Material-UI, Redux
                                     </Typography>
                                 </FeatureCard>
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الخلفية
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('taskapp_tech_backend', 'الخلفية')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         Node.js, Express, MongoDB
                                     </Typography>
                                 </FeatureCard>
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الخدمات
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('taskapp_tech_services', 'الخدمات')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         Firebase, AWS S3, Socket.io
                                     </Typography>
                                 </FeatureCard>

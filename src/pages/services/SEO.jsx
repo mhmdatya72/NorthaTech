@@ -2,11 +2,12 @@ import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import { useTranslation } from 'react-i18next';
 
 const ServicePage = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
     backgroundColor: '#ffffff',
-    direction: 'rtl',
+    direction: theme.direction,
     minHeight: '100vh',
 }));
 
@@ -57,24 +58,26 @@ const ServiceImage = styled('img')(({ theme }) => ({
 }));
 
 const SEO = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     return (
-        <ServicePage>
+        <ServicePage dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={8}>
-                        <ServiceTitle variant="h1">
-                            تحسين محركات البحث (SEO)
+                        <ServiceTitle variant="h1" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('seo_title', 'تحسين محركات البحث (SEO)')}
                         </ServiceTitle>
-                        <ServiceDescription>
-                            نقدم خدمات تحسين محركات البحث لتعزيز تواجدك على الإنترنت وتحسين ترتيب موقعك في نتائج البحث. خدماتنا تشمل:
+                        <ServiceDescription sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('seo_desc', 'نقدم خدمات تحسين محركات البحث لتعزيز تواجدك على الإنترنت وتحسين ترتيب موقعك في نتائج البحث. خدماتنا تشمل:')}
                         </ServiceDescription>
-                        <Box component="ul" sx={{ textAlign: 'right', fontSize: '1.1rem', lineHeight: 2 }}>
-                            <li>تحليل وتحسين الكلمات المفتاحية</li>
-                            <li>تحسين محتوى الموقع</li>
-                            <li>تحسين هيكل الموقع وسرعته</li>
-                            <li>بناء روابط خلفية قوية</li>
-                            <li>تحليل المنافسين</li>
-                            <li>تقارير أداء دورية</li>
+                        <Box component="ul" sx={{ textAlign: isArabic ? 'right' : 'left', fontSize: '1.1rem', lineHeight: 2 }}>
+                            <li>{t('seo_list1', 'تحليل وتحسين الكلمات المفتاحية')}</li>
+                            <li>{t('seo_list2', 'تحسين محتوى الموقع')}</li>
+                            <li>{t('seo_list3', 'تحسين هيكل الموقع وسرعته')}</li>
+                            <li>{t('seo_list4', 'بناء روابط خلفية قوية')}</li>
+                            <li>{t('seo_list5', 'تحليل المنافسين')}</li>
+                            <li>{t('seo_list6', 'تقارير أداء دورية')}</li>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -84,7 +87,7 @@ const SEO = () => {
                             </IconContainer>
                             <ServiceImage
                                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                                alt="تحسين محركات البحث"
+                                alt={t('seo_img_alt', 'تحسين محركات البحث')}
                             />
                         </Box>
                     </Grid>

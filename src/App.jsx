@@ -40,63 +40,70 @@ import ProjectManagement from './pages/products/ProjectManagement';
 import Ecommerce from './pages/products/Ecommerce';
 import CMS from './pages/products/CMS';
 import ELearning from './pages/products/ELearning';
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 function AppContent() {
     const location = useLocation();
     const isHomePage = location.pathname === '/';
+    const { t, i18n } = useTranslation();
 
     const getPageTitle = () => {
         switch (location.pathname) {
             case '/about':
-                return 'عن وثوق';
+                return t('about_title');
             case '/services':
-                return 'خدماتنا';
+                return t('servicespage_title');
             case '/services/web-development':
-                return 'تصميم وتطوير المواقع الإلكترونية';
+                return t('webdev_title');
             case '/services/seo':
-                return 'تحسين محركات البحث';
+                return t('seo_title');
             case '/services/mobile-apps':
-                return 'تطوير تطبيقات الهواتف الذكية';
+                return t('mobileapps_title');
             case '/services/social-media':
-                return 'إدارة منصات التواصل الاجتماعي';
+                return t('socialmedia_title');
             case '/projects':
-                return 'أعمالنا';
+                return t('projectspage_title');
             case '/projects/task-management':
-                return 'تطبيق إدارة المهام';
+                return t('projects_task_title');
             case '/projects/ecommerce-platform':
-                return 'منصة التجارة الإلكترونية';
+                return t('projects_ecommerce_title');
             case '/products':
-                return 'اكتشف المنتجات';
+                return t('productspage_title');
             case '/news':
-                return 'الأخبار';
+                return t('news_page_title');
             case '/careers':
-                return 'التوظيف';
+                return t('careers_title');
             case '/contact':
-                return 'تواصل معنا';
+                return t('contact_title');
             case '/products/zoho-crm':
-                return 'زوهو CRM';
+                return t('products_zoho_crm_title');
             case '/products/zoho-books':
-                return 'زوهو Books';
+                return t('products_zoho_books_title');
             case '/products/zoho-people':
-                return 'زوهو People';
+                return t('products_zoho_people_title');
             case '/news/new-services':
-                return 'خدمات جديدة';
+                return t('news_article1_title');
             case '/news/zoho-partnership':
-                return 'شراكة مع زوهو';
+                return t('news_article2_title');
             case '/news/local-expansion':
-                return 'توسع محلي';
+                return t('news_article3_title');
             case '/products/project-management':
-                return 'نظام إدارة المشاريع';
+                return t('products_pm_name');
             case '/products/ecommerce':
-                return 'منصة التجارة الإلكترونية';
+                return t('products_ecommerce_name');
             case '/products/cms':
-                return 'نظام إدارة المحتوى';
+                return t('products_cms_name');
             case '/products/elearning':
-                return 'منصة التعلم الإلكتروني';
+                return t('products_elearning_name');
             default:
                 return '';
         }
     };
+
+    useEffect(() => {
+        document.body.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
 
     return (
         <>
@@ -146,8 +153,12 @@ function AppContent() {
 }
 
 function App() {
+    const { i18n } = useTranslation();
+    useEffect(() => {
+        document.body.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
     const theme = createTheme({
-        direction: 'rtl',
+        direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
         palette: {
             primary: {
                 main: '#1976d2',

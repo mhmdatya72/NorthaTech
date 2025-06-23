@@ -2,11 +2,12 @@ import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import { useTranslation } from 'react-i18next';
 
 const ServicePage = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
     backgroundColor: '#ffffff',
-    direction: 'rtl',
+    direction: theme.direction,
     minHeight: '100vh',
 }));
 
@@ -57,24 +58,26 @@ const ServiceImage = styled('img')(({ theme }) => ({
 }));
 
 const MobileApps = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     return (
-        <ServicePage>
+        <ServicePage dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={8}>
-                        <ServiceTitle variant="h1">
-                            تطوير تطبيقات الهواتف الذكية
+                        <ServiceTitle variant="h1" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('mobileapps_title', 'تطوير تطبيقات الهواتف الذكية')}
                         </ServiceTitle>
-                        <ServiceDescription>
-                            نقدم خدمات تصميم وتطوير تطبيقات الجوال جذّابة بصريًا، تفاعلية وسهلة الاستخدام. خدماتنا تشمل:
+                        <ServiceDescription sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('mobileapps_desc', 'نقدم خدمات تصميم وتطوير تطبيقات الجوال جذّابة بصريًا، تفاعلية وسهلة الاستخدام. خدماتنا تشمل:')}
                         </ServiceDescription>
-                        <Box component="ul" sx={{ textAlign: 'right', fontSize: '1.1rem', lineHeight: 2 }}>
-                            <li>تطوير تطبيقات iOS و Android</li>
-                            <li>تصميم واجهات مستخدم جذابة</li>
-                            <li>تطوير تطبيقات متجاوبة</li>
-                            <li>تكامل مع الخدمات السحابية</li>
-                            <li>اختبار وضمان الجودة</li>
-                            <li>دعم فني وصيانة مستمرة</li>
+                        <Box component="ul" sx={{ textAlign: isArabic ? 'right' : 'left', fontSize: '1.1rem', lineHeight: 2 }}>
+                            <li>{t('mobileapps_list1', 'تطوير تطبيقات iOS و Android')}</li>
+                            <li>{t('mobileapps_list2', 'تصميم واجهات مستخدم جذابة')}</li>
+                            <li>{t('mobileapps_list3', 'تطوير تطبيقات متجاوبة')}</li>
+                            <li>{t('mobileapps_list4', 'تكامل مع الخدمات السحابية')}</li>
+                            <li>{t('mobileapps_list5', 'اختبار وضمان الجودة')}</li>
+                            <li>{t('mobileapps_list6', 'دعم فني وصيانة مستمرة')}</li>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -84,7 +87,7 @@ const MobileApps = () => {
                             </IconContainer>
                             <ServiceImage
                                 src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                                alt="تطوير تطبيقات الهواتف الذكية"
+                                alt={t('mobileapps_img_alt', 'تطوير تطبيقات الهواتف الذكية')}
                             />
                         </Box>
                     </Grid>

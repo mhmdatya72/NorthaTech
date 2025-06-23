@@ -2,11 +2,12 @@ import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ShareIcon from '@mui/icons-material/Share';
+import { useTranslation } from 'react-i18next';
 
 const ServicePage = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
     backgroundColor: '#ffffff',
-    direction: 'rtl',
+    direction: theme.direction,
     minHeight: '100vh',
 }));
 
@@ -57,24 +58,26 @@ const ServiceImage = styled('img')(({ theme }) => ({
 }));
 
 const SocialMedia = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     return (
-        <ServicePage>
+        <ServicePage dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={8}>
-                        <ServiceTitle variant="h1">
-                            إدارة منصات التواصل الاجتماعي
+                        <ServiceTitle variant="h1" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('socialmedia_title')}
                         </ServiceTitle>
-                        <ServiceDescription>
-                            نساعدك في بناء وإدارة وجودك على منصات التواصل الاجتماعي بشكل احترافي. خدماتنا تشمل:
+                        <ServiceDescription sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                            {t('socialmedia_desc', 'نساعدك في بناء وإدارة وجودك على منصات التواصل الاجتماعي بشكل احترافي. خدماتنا تشمل:')}
                         </ServiceDescription>
-                        <Box component="ul" sx={{ textAlign: 'right', fontSize: '1.1rem', lineHeight: 2 }}>
-                            <li>إدارة حسابات التواصل الاجتماعي</li>
-                            <li>إنشاء محتوى جذاب</li>
-                            <li>إدارة الحملات الإعلانية</li>
-                            <li>تحليل الأداء والتقارير</li>
-                            <li>بناء استراتيجية تواصل فعالة</li>
-                            <li>زيادة التفاعل والمتابعين</li>
+                        <Box component="ul" sx={{ textAlign: isArabic ? 'right' : 'left', fontSize: '1.1rem', lineHeight: 2 }}>
+                            <li>{t('socialmedia_list1', 'إدارة حسابات التواصل الاجتماعي')}</li>
+                            <li>{t('socialmedia_list2', 'إنشاء محتوى جذاب')}</li>
+                            <li>{t('socialmedia_list3', 'إدارة الحملات الإعلانية')}</li>
+                            <li>{t('socialmedia_list4', 'تحليل الأداء والتقارير')}</li>
+                            <li>{t('socialmedia_list5', 'بناء استراتيجية تواصل فعالة')}</li>
+                            <li>{t('socialmedia_list6', 'زيادة التفاعل والمتابعين')}</li>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -84,7 +87,7 @@ const SocialMedia = () => {
                             </IconContainer>
                             <ServiceImage
                                 src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                                alt="إدارة منصات التواصل الاجتماعي"
+                                alt={t('socialmedia_img_alt', 'إدارة منصات التواصل الاجتماعي')}
                             />
                         </Box>
                     </Grid>

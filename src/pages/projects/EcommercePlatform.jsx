@@ -2,11 +2,12 @@ import React from 'react';
 import { Box, Container, Typography, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AnimatedSection from '../../components/AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
-const ProjectContainer = styled(Box)(({ theme }) => ({
+const ProjectContainer = styled(Box)(({ theme, dir }) => ({
     padding: theme.spacing(8, 0),
     backgroundColor: '#f5f5f5',
-    direction: 'rtl',
+    direction: dir,
 }));
 
 const ProjectImage = styled('img')(({ theme }) => ({
@@ -33,33 +34,35 @@ const FeatureCard = styled(Paper)(({ theme }) => ({
 }));
 
 const EcommercePlatform = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     const features = [
         {
-            title: 'نظام دفع آمن',
-            description: 'تكامل مع بوابات الدفع المختلفة مع ضمان أمان المعاملات وحماية بيانات العملاء.',
+            title: t('ecommerce_project_feature1_title', 'نظام دفع آمن'),
+            description: t('ecommerce_project_feature1_desc', 'تكامل مع بوابات الدفع المختلفة مع ضمان أمان المعاملات وحماية بيانات العملاء.'),
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         },
         {
-            title: 'إدارة المخزون',
-            description: 'نظام متقدم لإدارة المخزون مع تتبع المنتجات والمستويات والتنبيهات التلقائية.',
+            title: t('ecommerce_project_feature2_title', 'إدارة المخزون'),
+            description: t('ecommerce_project_feature2_desc', 'نظام متقدم لإدارة المخزون مع تتبع المنتجات والمستويات والتنبيهات التلقائية.'),
             image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         },
         {
-            title: 'تجربة مستخدم سلسة',
-            description: 'واجهة مستخدم سهلة الاستخدام مع تصميم متجاوب وتجربة تسوق سلسة.',
+            title: t('ecommerce_project_feature3_title', 'تجربة مستخدم سلسة'),
+            description: t('ecommerce_project_feature3_desc', 'واجهة مستخدم سهلة الاستخدام مع تصميم متجاوب وتجربة تسوق سلسة.'),
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         },
     ];
 
     return (
-        <ProjectContainer>
+        <ProjectContainer dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <AnimatedSection direction="right">
-                    <Typography variant="h2" component="h1" gutterBottom align="right">
-                        منصة التجارة الإلكترونية
+                    <Typography variant="h2" component="h1" gutterBottom align={isArabic ? 'right' : 'left'}>
+                        {t('projects_ecommerce_title', 'منصة التجارة الإلكترونية')}
                     </Typography>
-                    <Typography variant="h5" color="text.secondary" paragraph align="right">
-                        منصة متكاملة للتجارة الإلكترونية مع نظام دفع آمن وإدارة مخزون متقدمة وتجربة مستخدم سلسة
+                    <Typography variant="h5" color="text.secondary" paragraph align={isArabic ? 'right' : 'left'}>
+                        {t('projects_ecommerce_desc', 'منصة متكاملة للتجارة الإلكترونية مع نظام دفع آمن وإدارة مخزون متقدمة وتجربة مستخدم سلسة')}
                     </Typography>
                 </AnimatedSection>
 
@@ -67,14 +70,14 @@ const EcommercePlatform = () => {
                     <AnimatedSection direction="center">
                         <ProjectImage
                             src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="منصة التجارة الإلكترونية"
+                            alt={t('projects_ecommerce_title', 'منصة التجارة الإلكترونية')}
                         />
                     </AnimatedSection>
                 </Box>
 
                 <AnimatedSection direction="left">
-                    <Typography variant="h4" component="h2" gutterBottom align="right">
-                        المميزات الرئيسية
+                    <Typography variant="h4" component="h2" gutterBottom align={isArabic ? 'right' : 'left'}>
+                        {t('ecommerce_project_features_title', 'المميزات الرئيسية')}
                     </Typography>
                 </AnimatedSection>
 
@@ -95,10 +98,10 @@ const EcommercePlatform = () => {
                                             }}
                                         />
                                     </Box>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
                                         {feature.title}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         {feature.description}
                                     </Typography>
                                 </FeatureCard>
@@ -109,36 +112,36 @@ const EcommercePlatform = () => {
 
                 <Box sx={{ mt: 6 }}>
                     <AnimatedSection direction="up">
-                        <Typography variant="h4" component="h2" gutterBottom align="right">
-                            التقنيات المستخدمة
+                        <Typography variant="h4" component="h2" gutterBottom align={isArabic ? 'right' : 'left'}>
+                            {t('ecommerce_project_tech_title', 'التقنيات المستخدمة')}
                         </Typography>
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الواجهة الأمامية
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('ecommerce_project_tech_frontend', 'الواجهة الأمامية')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         Next.js, Material-UI, Redux Toolkit
                                     </Typography>
                                 </FeatureCard>
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الخلفية
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('ecommerce_project_tech_backend', 'الخلفية')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         Node.js, Express, PostgreSQL
                                     </Typography>
                                 </FeatureCard>
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <FeatureCard>
-                                    <Typography variant="h6" component="h3" gutterBottom align="right">
-                                        الخدمات
+                                    <Typography variant="h6" component="h3" gutterBottom align={isArabic ? 'right' : 'left'}>
+                                        {t('ecommerce_project_tech_services', 'الخدمات')}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" align="right">
+                                    <Typography variant="body1" color="text.secondary" align={isArabic ? 'right' : 'left'}>
                                         Stripe, AWS S3, Redis
                                     </Typography>
                                 </FeatureCard>

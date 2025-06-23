@@ -3,6 +3,7 @@ import { Box, Container, Typography, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useTranslation } from 'react-i18next';
 
 const PartnersSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
@@ -108,19 +109,9 @@ const partners = [
         url: 'https://www.sap.com'
     },
     {
-        name: 'Salesforce',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce_logo.svg',
-        url: 'https://www.salesforce.com'
-    },
-    {
         name: 'Adobe',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg',
         url: 'https://www.adobe.com'
-    },
-    {
-        name: 'Intel',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282020%2C_light_blue%29.svg',
-        url: 'https://www.intel.com'
     },
     {
         name: 'Cisco',
@@ -138,19 +129,9 @@ const partners = [
         url: 'https://www.hp.com'
     },
     {
-        name: 'Lenovo',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Lenovo_logo_2015.svg',
-        url: 'https://www.lenovo.com'
-    },
-    {
         name: 'Samsung',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg',
         url: 'https://www.samsung.com'
-    },
-    {
-        name: 'Sony',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Sony_logo.svg',
-        url: 'https://www.sony.com'
     },
     {
         name: 'LG',
@@ -165,6 +146,8 @@ const partners = [
 ];
 
 const Partners = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     const [translateX, setTranslateX] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const logoWidth = 200;
@@ -201,7 +184,7 @@ const Partners = () => {
     }, []);
 
     return (
-        <PartnersSection>
+        <PartnersSection dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Typography
                     variant="h3"
@@ -209,10 +192,11 @@ const Partners = () => {
                     gutterBottom
                     sx={{
                         fontWeight: 900,
-                        fontSize: { xs: '2rem', md: '3rem' }
+                        fontSize: { xs: '2rem', md: '3rem' },
+                        textAlign: 'center'
                     }}
                 >
-                    <Box component="span" sx={{ color: '#1976d2' }}>شركاء</Box> النجاح
+                    <Box component="span" sx={{ color: '#1976d2' }}>{t('partners_title_blue', 'شركاء')}</Box> {t('partners_title_black', 'النجاح')}
                 </Typography>
                 <SliderContainer>
                     <NavigationButton

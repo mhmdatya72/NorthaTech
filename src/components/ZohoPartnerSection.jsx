@@ -2,8 +2,9 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AnimatedSection from './AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
-const PartnerContainer = styled(Box)(({ theme }) => ({
+const PartnerContainer = styled(Box)(({ theme, dir }) => ({
     backgroundColor: '#ffffff',
     borderRadius: '15px',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1)',
@@ -12,7 +13,7 @@ const PartnerContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    direction: 'rtl',
+    direction: dir,
     transition: 'box-shadow 0.3s ease-in-out',
     '&:hover': {
         boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.15)',
@@ -109,29 +110,30 @@ const BlackText = styled(Typography)(({ theme }) => ({
 }));
 
 const ZohoPartnerSection = () => {
+    const { t, i18n } = useTranslation();
     return (
         <Container maxWidth="lg">
             <AnimatedSection direction="center" threshold={0.2}>
-                <PartnerContainer>
+                <PartnerContainer dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
                     <PartnerTextWrapper>
                         <TextRow>
                             <BlueText>
-                                NorthaTech شريك موثوق
+                                {t('zoho_partner_blue', 'NorthaTech شريك موثوق')}
                             </BlueText>
                             <BlackText>
-                                لدى
+                                {t('zoho_partner_black1', 'لدى')}
                             </BlackText>
                         </TextRow>
                         <TextRow>
                             <BlackText>
-                                زوهو لحلول الأعمال
+                                {t('zoho_partner_black2', 'زوهو لحلول الأعمال')}
                             </BlackText>
                         </TextRow>
                     </PartnerTextWrapper>
                     <ZohoLogo>
                         <img
                             src="https://wothoq.co/wp-content/uploads/2023/12/zoho.png"
-                            alt="Zoho Authorized Partner"
+                            alt={t('zoho_partner_img_alt', 'Zoho Authorized Partner')}
                         />
                     </ZohoLogo>
                 </PartnerContainer>

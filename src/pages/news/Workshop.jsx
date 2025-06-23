@@ -29,7 +29,7 @@ const ContentCard = styled(Paper)(({ theme }) => ({
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
 }));
 
-const NewServices = () => {
+const Workshop = () => {
     const { t, i18n } = useTranslation();
     const isArabic = i18n.language === 'ar';
     return (
@@ -39,10 +39,10 @@ const NewServices = () => {
                     <Grid item xs={12}>
                         <AnimatedSection direction="down">
                             <Typography variant="h3" component="h1" gutterBottom textAlign="center">
-                                {t('news_newservices_title', 'شركة وثوق تطلق خدمات جديدة')}
+                                {t('news_workshop_title', 'ورشة عمل مجانية: أساسيات تصميم المواقع')}
                             </Typography>
                             <Typography variant="h6" color="text.secondary" paragraph textAlign="center">
-                                {t('news_newservices_date', '15 مارس 2024')}
+                                {t('news_workshop_date', '20 يونيو 2024')}
                             </Typography>
                         </AnimatedSection>
                     </Grid>
@@ -50,8 +50,8 @@ const NewServices = () => {
                         <AnimatedSection direction="up">
                             <Box display="flex" justifyContent="center" mb={4}>
                                 <NewsImage
-                                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                                    alt={t('news_newservices_img_alt', 'خدمات جديدة')}
+                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                    alt={t('news_workshop_img_alt', 'ورشة عمل تصميم مواقع')}
                                 />
                             </Box>
                         </AnimatedSection>
@@ -60,27 +60,24 @@ const NewServices = () => {
                         <AnimatedSection direction="up">
                             <ContentCard>
                                 <Typography variant="body1" paragraph>
-                                    {t('news_newservices_p1', 'أعلنت شركة وثوق اليوم عن إطلاق مجموعة جديدة من الخدمات التقنية المتطورة لدعم الشركات والمؤسسات في المنطقة. تأتي هذه الخطوة في إطار استراتيجية الشركة للتوسع وتقديم حلول مبتكرة تلبي احتياجات العملاء المتزايدة.')}
+                                    {t('news_workshop_p1', 'يسرنا دعوتكم لحضور ورشة عمل مجانية حول أساسيات تصميم المواقع الإلكترونية، حيث سنتعرف على أهم المبادئ والخطوات العملية لبناء موقع احترافي.')}
                                 </Typography>
                                 <Typography variant="body1" paragraph>
-                                    {t('news_newservices_p2', 'وتشمل الخدمات الجديدة:')}
+                                    {t('news_workshop_p2', 'محاور الورشة:')}
                                 </Typography>
                                 <Typography variant="body1" component="div" sx={{ pl: 2 }}>
                                     <ul>
-                                        <li>{t('news_newservices_list1', 'خدمات استشارات تقنية متخصصة')}</li>
-                                        <li>{t('news_newservices_list2', 'حلول سحابية متكاملة')}</li>
-                                        <li>{t('news_newservices_list3', 'خدمات أمن سيبراني متقدمة')}</li>
-                                        <li>{t('news_newservices_list4', 'حلول ذكاء اصطناعي للأعمال')}</li>
+                                        <li>{t('news_workshop_list1', 'مقدمة في تصميم المواقع وأهميته')}</li>
+                                        <li>{t('news_workshop_list2', 'أساسيات HTML وCSS')}</li>
+                                        <li>{t('news_workshop_list3', 'مبادئ التصميم المتجاوب')}</li>
+                                        <li>{t('news_workshop_list4', 'أفضل الممارسات لتجربة المستخدم')}</li>
                                     </ul>
                                 </Typography>
                                 <Typography variant="body1" paragraph>
-                                    {t('news_newservices_p3', 'وقال الرئيس التنفيذي للشركة: "نحن متحمسون لإطلاق هذه الخدمات الجديدة التي تم تطويرها بناءً على احتياجات عملائنا وتوقعاتهم. نسعى دائماً لتقديم أفضل الحلول التقنية التي تساعد الشركات على النمو والتطور في العصر الرقمي."')}
+                                    {t('news_workshop_p3', 'الورشة مناسبة للمبتدئين وكل من يرغب في تعلم أساسيات تصميم المواقع. سيتم تقديم شهادات حضور للمشاركين.')}
                                 </Typography>
                                 <Typography variant="body1" paragraph>
-                                    {t('news_newservices_p4', 'وتأتي هذه الخدمات الجديدة لتكمل مجموعة الخدمات الحالية للشركة، والتي تشمل تطوير المواقع والتطبيقات، وتحسين محركات البحث، وإدارة وسائل التواصل الاجتماعي.')}
-                                </Typography>
-                                <Typography variant="body1" paragraph>
-                                    {t('news_newservices_p5', 'يمكن للشركات والمؤسسات المهتمة بالخدمات الجديدة التواصل مع فريق المبيعات في وثوق للحصول على مزيد من المعلومات والاستشارات المجانية.')}
+                                    {t('news_workshop_p4', 'للتسجيل أو الاستفسار، يرجى التواصل مع فريقنا عبر البريد الإلكتروني أو الهاتف الموضحين في صفحة التواصل.')}
                                 </Typography>
                             </ContentCard>
                         </AnimatedSection>
@@ -91,4 +88,4 @@ const NewServices = () => {
     );
 };
 
-export default NewServices; 
+export default Workshop; 

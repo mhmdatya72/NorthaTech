@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useTranslation } from 'react-i18next';
 
 const ProductsSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(2, 0),
@@ -66,32 +67,34 @@ const CloseButton = styled(IconButton)(({ theme }) => ({
 
 const products = [
     {
-        name: 'نظام إدارة المشاريع',
-        description: 'منصة متكاملة لإدارة المشاريع تمكنك من تتبع المهام، إدارة الفرق، وتنظيم الموارد بكفاءة عالية.',
+        nameKey: 'products_pm_name',
+        descKey: 'products_pm_desc',
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/products/project-management',
     },
     {
-        name: 'منصة التجارة الإلكترونية',
-        description: 'حل متكامل للتجارة الإلكترونية يوفر تجربة تسوق سلسة مع إدارة مخزون متقدمة ونظام دفع آمن.',
+        nameKey: 'products_ecommerce_name',
+        descKey: 'products_ecommerce_desc',
         image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/products/ecommerce',
     },
     {
-        name: 'نظام إدارة المحتوى',
-        description: 'منصة قوية لإدارة المحتوى تمكنك من إنشاء وتنظيم ونشر المحتوى بسهولة مع واجهة تحكم سهلة الاستخدام.',
+        nameKey: 'products_cms_name',
+        descKey: 'products_cms_desc',
         image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/products/cms',
     },
     {
-        name: 'منصة التعلم الإلكتروني',
-        description: 'نظام متكامل للتعلم الإلكتروني يوفر محتوى تفاعلي، اختبارات، ومتابعة تقدم المتعلمين.',
+        nameKey: 'products_elearning_name',
+        descKey: 'products_elearning_desc',
         image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
         link: '/products/elearning',
     },
 ];
 
 const Products = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageClick = (image) => {
@@ -103,7 +106,7 @@ const Products = () => {
     };
 
     return (
-        <ProductsSection>
+        <ProductsSection dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Grid container spacing={4} sx={{ mt: 4 }}>
                     {products.map((product, index) => (
@@ -114,20 +117,20 @@ const Products = () => {
                                 {...(true ? { timeout: 1000 + (index * 200) } : {})}
                             >
                                 <Fade in={true} timeout={1000 + (index * 200)}>
-                                    <ProductCard>
+                                    <ProductCard dir={isArabic ? 'rtl' : 'ltr'}>
                                         <ProductImage
                                             component={Link}
                                             to={product.link}
                                             image={product.image}
-                                            alt={product.name}
+                                            alt={t(product.nameKey)}
                                         />
                                         <ProductContent>
                                             <Box>
-                                                <Typography gutterBottom variant="h5" component="h3">
-                                                    {product.name}
+                                                <Typography gutterBottom variant="h5" component="h3" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                                                    {t(product.nameKey)}
                                                 </Typography>
-                                                <Typography variant="body2" color="text.secondary" paragraph>
-                                                    {product.description}
+                                                <Typography variant="body2" color="text.secondary" paragraph sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                                                    {t(product.descKey)}
                                                 </Typography>
                                             </Box>
                                             <ViewDetailsButton
@@ -136,7 +139,7 @@ const Products = () => {
                                                 variant="contained"
                                                 startIcon={<VisibilityIcon />}
                                             >
-                                                عرض التفاصيل
+                                                {t('products_view_details', 'عرض التفاصيل')}
                                             </ViewDetailsButton>
                                         </ProductContent>
                                     </ProductCard>

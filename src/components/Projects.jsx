@@ -5,10 +5,12 @@ import { Link, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useTranslation } from 'react-i18next';
 
 const ProjectsSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
-    direction: 'rtl',
+    backgroundColor: '#f5f5f5',
+    direction: theme.direction,
 }));
 
 const ProjectCard = styled(Card)(({ theme }) => ({
@@ -107,50 +109,50 @@ const CloseButton = styled(IconButton)(({ theme }) => ({
 
 const projects = [
     {
-        title: 'تطبيق إدارة المهام',
-        description: 'تطبيق متكامل لإدارة المهام والمشاريع مع واجهة مستخدم سهلة الاستخدام وميزات متقدمة للتتبع والتعاون.',
+        titleKey: 'projects_task_title',
+        descKey: 'projects_task_desc',
         image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
         link: '/projects/task-management',
     },
     {
-        title: 'منصة التجارة الإلكترونية',
-        description: 'منصة متكاملة للتجارة الإلكترونية مع نظام دفع آمن وإدارة مخزون متقدمة وتجربة مستخدم سلسة.',
+        titleKey: 'projects_ecommerce_title',
+        descKey: 'projects_ecommerce_desc',
         image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/projects/ecommerce-platform',
     },
     {
-        title: 'نظام إدارة المحتوى',
-        description: 'نظام متطور لإدارة المحتوى مع واجهة تحكم سهلة الاستخدام وميزات متقدمة للتحرير والنشر.',
+        titleKey: 'projects_cms_title',
+        descKey: 'projects_cms_desc',
         image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/projects',
     },
     {
-        title: 'تطبيق التواصل الاجتماعي',
-        description: 'تطبيق تواصل اجتماعي مع ميزات متقدمة للمحادثة ومشاركة المحتوى والتفاعل بين المستخدمين.',
+        titleKey: 'projects_social_title',
+        descKey: 'projects_social_desc',
         image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
         link: '/projects',
     },
     {
-        title: 'منصة التعلم الإلكتروني',
-        description: 'منصة متكاملة للتعلم الإلكتروني مع محتوى تفاعلي ونظام متابعة التقدم وتقييم الأداء.',
+        titleKey: 'projects_elearning_title',
+        descKey: 'projects_elearning_desc',
         image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
         link: '/projects',
     },
     {
-        title: 'تطبيق إدارة الموارد البشرية',
-        description: 'تطبيق متكامل لإدارة الموارد البشرية مع ميزات متقدمة للموظفين والتوظيف وإدارة الأداء.',
+        titleKey: 'projects_hr_title',
+        descKey: 'projects_hr_desc',
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         link: '/projects',
     },
 ];
 
-const Projects = () => {
+const Projects = ({ isProjectsPage }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [visibleProjects, setVisibleProjects] = useState([]);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const location = useLocation();
-    const isProjectsPage = location.pathname === '/projects';
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -189,22 +191,22 @@ const Projects = () => {
                     <ProjectImage
                         component="img"
                         image={project.image}
-                        alt={project.title}
+                        alt={t(project.titleKey)}
                         onClick={() => handleImageLink(project.link)}
                     />
                     <ProjectContent>
                         <Typography gutterBottom variant="h4" component="h3">
-                            {project.title}
+                            {t(project.titleKey)}
                         </Typography>
                         <Typography variant="body1" color="text.secondary" paragraph>
-                            {project.description}
+                            {t(project.descKey)}
                         </Typography>
                         <ViewDetailsButton
                             component={Link}
                             to={project.link}
                             startIcon={<VisibilityIcon />}
                         >
-                            عرض التفاصيل
+                            {t('projects_view_details', 'عرض التفاصيل')}
                         </ViewDetailsButton>
                     </ProjectContent>
                 </>
@@ -214,23 +216,23 @@ const Projects = () => {
                         <>
                             <ProjectContent>
                                 <Typography gutterBottom variant="h4" component="h3">
-                                    {project.title}
+                                    {t(project.titleKey)}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary" paragraph>
-                                    {project.description}
+                                    {t(project.descKey)}
                                 </Typography>
                                 <ViewDetailsButton
                                     component={Link}
                                     to={project.link}
                                     startIcon={<VisibilityIcon />}
                                 >
-                                    عرض التفاصيل
+                                    {t('projects_view_details', 'عرض التفاصيل')}
                                 </ViewDetailsButton>
                             </ProjectContent>
                             <ProjectImage
                                 component="img"
                                 image={project.image}
-                                alt={project.title}
+                                alt={t(project.titleKey)}
                                 onClick={() => handleImageLink(project.link)}
                             />
                         </>
@@ -239,22 +241,22 @@ const Projects = () => {
                             <ProjectImage
                                 component="img"
                                 image={project.image}
-                                alt={project.title}
+                                alt={t(project.titleKey)}
                                 onClick={() => handleImageLink(project.link)}
                             />
                             <ProjectContent>
                                 <Typography gutterBottom variant="h4" component="h3">
-                                    {project.title}
+                                    {t(project.titleKey)}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary" paragraph>
-                                    {project.description}
+                                    {t(project.descKey)}
                                 </Typography>
                                 <ViewDetailsButton
                                     component={Link}
                                     to={project.link}
                                     startIcon={<VisibilityIcon />}
                                 >
-                                    عرض التفاصيل
+                                    {t('projects_view_details', 'عرض التفاصيل')}
                                 </ViewDetailsButton>
                             </ProjectContent>
                         </>
@@ -265,19 +267,19 @@ const Projects = () => {
     );
 
     return (
-        <ProjectsSection>
+        <ProjectsSection dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 {!isProjectsPage && (
                     <Box display="flex" justifyContent="space-between" alignItems="center" mt={6}>
                         <Typography variant="h3" component="h2">
-                            جميع أعمالنا
+                            {t('projects_section_title', 'جميع أعمالنا')}
                         </Typography>
                         <ViewAllButton
                             component={Link}
                             to="/projects"
                             startIcon={<ArrowBackIcon />}
                         >
-                            جميع المشاريع
+                            {t('projects_all_btn', 'جميع المشاريع')}
                         </ViewAllButton>
                     </Box>
                 )}

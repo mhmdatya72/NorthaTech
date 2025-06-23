@@ -1,5 +1,6 @@
 import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = styled(Box)(({ theme }) => ({
     background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
@@ -18,31 +19,32 @@ const ServiceCard = styled(Card)(({ theme }) => ({
     },
 }));
 
-const services = [
-    {
-        title: 'تصميم وتطوير المواقع',
-        description: 'نقوم بتصميم وتطوير مواقع إلكترونية احترافية تناسب احتياجات عملك',
-    },
-    {
-        title: 'تطبيقات الجوال',
-        description: 'نطور تطبيقات الهواتف الذكية بأحدث التقنيات وأعلى معايير الجودة',
-    },
-    {
-        title: 'تسويق إلكتروني',
-        description: 'نساعدك في الوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعالة',
-    },
-];
-
 const Home = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
+    const services = [
+        {
+            title: t('home_service1_title', 'تصميم وتطوير المواقع'),
+            description: t('home_service1_desc', 'نقوم بتصميم وتطوير مواقع إلكترونية احترافية تناسب احتياجات عملك'),
+        },
+        {
+            title: t('home_service2_title', 'تطبيقات الجوال'),
+            description: t('home_service2_desc', 'نطور تطبيقات الهواتف الذكية بأحدث التقنيات وأعلى معايير الجودة'),
+        },
+        {
+            title: t('home_service3_title', 'تسويق إلكتروني'),
+            description: t('home_service3_desc', 'نساعدك في الوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعالة'),
+        },
+    ];
     return (
-        <Box>
+        <Box dir={isArabic ? 'rtl' : 'ltr'}>
             <HeroSection>
                 <Container>
                     <Typography variant="h2" component="h1" gutterBottom>
-                        أهلاً بك في NorthaTech
+                        {t('home_hero_title', 'أهلاً بك في NorthaTech')}
                     </Typography>
                     <Typography variant="h5" paragraph>
-                        شريكك الموثوق في عالم التقنية والرقمنة
+                        {t('home_hero_subtitle', 'شريكك الموثوق في عالم التقنية والرقمنة')}
                     </Typography>
                     <Button
                         variant="contained"
@@ -50,14 +52,14 @@ const Home = () => {
                         size="large"
                         sx={{ mt: 2 }}
                     >
-                        تواصل معنا
+                        {t('home_hero_cta', 'تواصل معنا')}
                     </Button>
                 </Container>
             </HeroSection>
 
             <Container sx={{ py: 8 }}>
                 <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
-                    خدماتنا
+                    {t('home_services_title', 'خدماتنا')}
                 </Typography>
                 <Grid container spacing={4} sx={{ mt: 2 }}>
                     {services.map((service, index) => (
@@ -80,31 +82,31 @@ const Home = () => {
             <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
                 <Container>
                     <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
-                        لماذا تختارنا؟
+                        {t('home_whyus_title', 'لماذا تختارنا؟')}
                     </Typography>
                     <Grid container spacing={4} sx={{ mt: 2 }}>
                         <Grid item xs={12} md={4}>
                             <Typography variant="h6" gutterBottom>
-                                خبرة واسعة
+                                {t('home_whyus_experience_title', 'خبرة واسعة')}
                             </Typography>
                             <Typography>
-                                فريق عمل محترف مع سنوات من الخبرة في مجال التقنية
+                                {t('home_whyus_experience_desc', 'فريق عمل محترف مع سنوات من الخبرة في مجال التقنية')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <Typography variant="h6" gutterBottom>
-                                حلول مبتكرة
+                                {t('home_whyus_innovative_title', 'حلول مبتكرة')}
                             </Typography>
                             <Typography>
-                                نقدم حلولاً تقنية مبتكرة تناسب احتياجات عملك
+                                {t('home_whyus_innovative_desc', 'نقدم حلولاً تقنية مبتكرة تناسب احتياجات عملك')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <Typography variant="h6" gutterBottom>
-                                دعم مستمر
+                                {t('home_whyus_support_title', 'دعم مستمر')}
                             </Typography>
                             <Typography>
-                                نقدم دعماً فنياً مستمراً لضمان نجاح مشروعك
+                                {t('home_whyus_support_desc', 'نقدم دعماً فنياً مستمراً لضمان نجاح مشروعك')}
                             </Typography>
                         </Grid>
                     </Grid>

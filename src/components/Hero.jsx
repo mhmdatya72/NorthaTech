@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import imageUrls from '../utils/imageUrls';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = styled(Box)(({ theme }) => ({
     background: 'linear-gradient(135deg, #1976d2 0%, #2196F3 100%)',
@@ -12,27 +13,6 @@ const HeroSection = styled(Box)(({ theme }) => ({
     position: 'relative',
     overflow: 'hidden',
 }));
-
-const BackgroundImages = styled(Box)({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: 0,
-    pointerEvents: 'none',
-    overflow: 'hidden',
-    '& img': {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        opacity: 0.35,
-        filter: 'blur(0.5px)',
-    },
-});
 
 const GreenOverlay = styled(Box)({
     position: 'absolute',
@@ -100,6 +80,27 @@ const AnimatedLine = styled('h2')(({ theme }) => ({
     },
 }));
 
+const BackgroundImages = styled(Box)({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 0,
+    pointerEvents: 'none',
+    overflow: 'hidden',
+    '& img': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        opacity: 0.7,
+        filter: 'blur(0.1px)',
+    },
+});
+
 const animatedLines = [
     'NorthaTech - الريادة في الحلول الرقمية',
     'نحن نبتكر من أجل المستقبل',
@@ -159,7 +160,16 @@ function useMultiTypewriter(lines, speed = 80, pause = 900, restartPause = 2000)
 }
 
 const Hero = () => {
-    const animatedLinesState = useMultiTypewriter(animatedLines);
+    const { t } = useTranslation();
+    const animatedLinesState = useMultiTypewriter([
+        t('hero_line1', 'NorthaTech - الريادة في الحلول الرقمية'),
+        t('hero_line2', 'نحن نبتكر من أجل المستقبل'),
+        t('hero_line3', 'خبرة في تطوير البرمجيات والتقنيات الحديثة'),
+        t('hero_line4', 'شريكك في التحول الرقمي'),
+        t('hero_line5', 'فريق عمل محترف لخدمة أعمالك'),
+        t('hero_line6', 'حلول متكاملة لإدارة مشاريعك'),
+        t('hero_line7', 'نصنع الفرق في عالم التقنية'),
+    ]);
     return (
         <HeroSection>
             <BackgroundImages>
@@ -171,13 +181,13 @@ const Hero = () => {
                 loop
                 playsInline
             >
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4" />
+                <source src="https://videos.pexels.com/video-files/3184416/3184416-hd_1920_1080_25fps.mp4" type="video/mp4" />
             </VideoBackground>
             <GreenOverlay />
             <HeroContent>
                 <AnimatedLinesBox>
                     {animatedLinesState.map((line, idx) => (
-                        <AnimatedLine key={idx}>{line}{idx === animatedLinesState.findIndex(l => l.length < animatedLines[idx].length) ? <span style={{borderRight: '2px solid #fff', marginLeft: 2}}></span> : null}</AnimatedLine>
+                        <AnimatedLine key={idx}>{line}{idx === animatedLinesState.findIndex(l => l.length < line.length) ? <span style={{borderRight: '2px solid #fff', marginLeft: 2}}></span> : null}</AnimatedLine>
                     ))}
                 </AnimatedLinesBox>
                 <HeroImageWithText>

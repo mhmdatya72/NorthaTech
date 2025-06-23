@@ -2,12 +2,13 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Services from '../components/Services'; // Import the existing Services component
+import { useTranslation } from 'react-i18next';
 
 const ServicesPageContainer = styled(Box)(({ theme }) => ({
     paddingTop: theme.spacing(10),
     paddingBottom: theme.spacing(8),
     backgroundColor: theme.palette.background.default,
-    direction: 'rtl',
+    direction: theme.direction,
 }));
 
 const PageTitle = styled(Typography)(({ theme }) => ({
@@ -22,14 +23,15 @@ const PageTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const ServicesPage = () => {
+    const { t, i18n } = useTranslation();
     return (
-        <ServicesPageContainer>
+        <ServicesPageContainer dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <PageTitle variant="h1">
-                    خدماتنا
+                    {t('servicespage_title', 'خدماتنا')}
                 </PageTitle>
                 <Typography variant="body1" align="center" paragraph sx={{ maxWidth: '800px', margin: '0 auto 60px' }}>
-                    اكتشف مجموعتنا الواسعة من الخدمات الرقمية المصممة لتلبية احتياجات عملك وتحقيق أهدافك.
+                    {t('servicespage_desc', 'اكتشف مجموعتنا الواسعة من الخدمات الرقمية المصممة لتلبية احتياجات عملك وتحقيق أهدافك.')}
                 </Typography>
                 {/* The existing Services component will render the service cards */}
                 <Services isFullPage={true} />

@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import imageUrls from '../utils/imageUrls';
 import AnimatedSection from './AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
 const Line = styled(Box)(({ theme }) => ({
     width: '66.66%',
@@ -72,22 +73,23 @@ const StyledImage = styled('img')({
 });
 
 const AboutWothoq = () => {
+    const { t, i18n } = useTranslation();
     return (
-        <AboutSection>
+        <AboutSection dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <ContentWrapper>
                     <AnimatedSection direction="right">
                         <TextWrapper>
                             <Line />
                             <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
-                                NorthaTech
+                                {t('aboutwothoq_title', 'NorthaTech')}
                             </Typography>
                             <Typography variant="h6" paragraph sx={{ color: 'white' }}>
-                                NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات
+                                {t('aboutwothoq_desc', 'NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق, كما نتميز بتقديم خدمات متميزة تلبي احتياجات السوق المحلي والعالمي، حيث نعمل بثبات وتفاني منذ أكثر من 6 سنوات')}
                             </Typography>
                             <Link to="/about" style={{ textDecoration: 'none' }}>
                                 <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                                    للمزيد
+                                    {t('aboutwothoq_more', 'للمزيد')}
                                 </Button>
                             </Link>
                         </TextWrapper>
@@ -96,7 +98,7 @@ const AboutWothoq = () => {
                         <ImageWrapper>
                             <StyledImage
                                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                                alt="About Wothoq"
+                                alt={t('aboutwothoq_img_alt', 'About Wothoq')}
                             />
                         </ImageWrapper>
                     </AnimatedSection>

@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { styled } from '@mui/material/styles';
 import Logo from './Logo';
+import { useTranslation } from 'react-i18next';
 
 const StyledAppBar = styled(AppBar)(({ theme, scrolled }) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -67,6 +68,8 @@ const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { t, i18n } = useTranslation();
+    const [dir, setDir] = useState(i18n.language === 'ar' ? 'rtl' : 'ltr');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -80,8 +83,19 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [scrolled]);
 
+    useEffect(() => {
+        document.body.dir = dir;
+    }, [dir]);
+
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
+    };
+
+    const handleLanguageToggle = () => {
+        const newLang = i18n.language === 'ar' ? 'en' : 'ar';
+        i18n.changeLanguage(newLang);
+        setDir(newLang === 'ar' ? 'rtl' : 'ltr');
+        localStorage.setItem('lang', newLang);
     };
 
     const drawer = (
@@ -129,7 +143,7 @@ const Navbar = () => {
                     <Box sx={{
                         display: { xs: 'none', md: 'flex' },
                         alignItems: 'center',
-                        direction: 'rtl',
+                        direction: dir,
                         gap: '4px',
                         height: '100%'
                     }}>
@@ -143,7 +157,13 @@ const Navbar = () => {
                                 <NumberLabel active={location.pathname === item.path ? 1 : 0}>
                                     {item.number}
                                 </NumberLabel>
-                                {item.name}
+                                {t(item.name === 'عن وثوق' ? 'about' :
+                                    item.name === 'الرئيسية' ? 'home' :
+                                    item.name === 'الخدمات' ? 'services' :
+                                    item.name === 'الأعمال' ? 'projects' :
+                                    item.name === 'اكتشف المنتجات' ? 'products' :
+                                    item.name === 'الأخبار' ? 'news' :
+                                    item.name === 'التوظيف' ? 'careers' : item.name)}
                             </NavLink>
                         ))}
                         <ContactButton
@@ -152,8 +172,11 @@ const Navbar = () => {
                             variant="contained"
                             startIcon={<PhoneIcon sx={{ fontSize: '1.1rem' }} />}
                         >
-                            تواصل معنا
+                            {t('contact')}
                         </ContactButton>
+                        <Button variant="outlined" onClick={handleLanguageToggle} sx={{ ml: 2, minWidth: 40 }}>
+                            {t('language')}
+                        </Button>
                     </Box>
 
                     <Box sx={{

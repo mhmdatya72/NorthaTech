@@ -8,11 +8,12 @@ import ShareIcon from '@mui/icons-material/Share';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
 const ServicesSection = styled(Box)(({ theme }) => ({
     padding: theme.spacing(6.25, 0),
     backgroundColor: '#ffffff',
-    direction: 'rtl',
+    direction: theme.direction,
     minHeight: '100vh',
 }));
 
@@ -58,6 +59,7 @@ const AllServicesButton = styled(Button)(({ theme }) => ({
 
 const ServiceCardStyled = styled(Card)(({ theme }) => ({
     height: '100%',
+    minHeight: 370,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -105,33 +107,35 @@ const ReadMoreButton = styled(Button)(({ theme }) => ({
 const services = [
     {
         icon: <LaptopChromebookIcon />,
-        title: 'صمم وطور موقعك الإلكتروني',
-        description: 'نقوم بوضع استراتيجيات لتصميم وتطوير المواقع الإلكترونية، والتي لا تقتصر فقط على الشكل الجمالي للموقع فحسب',
+        titleKey: 'services_web_title',
+        descKey: 'services_web_desc',
         link: '/services/web-development'
     },
     {
         icon: <SearchIcon />,
-        title: 'تحسين وتطوير محركات البحث',
-        description: 'تعزيز تواجدك على الإنترنت والعمل على تحسين ترتيب موقعك في محركات البحث المجانية مثل قوقل بحيث يظهر',
+        titleKey: 'services_seo_title',
+        descKey: 'services_seo_desc',
         link: '/services/seo'
     },
     {
         icon: <PhoneIphoneIcon />,
-        title: 'تطوير تطبيقات الهواتف الذكية',
-        description: 'تصميم وتطوير تطبيقات الجوال جذّابة بصريًا، تفاعلية وسهلة الاستخدام من تطبيقات الأجهزة الذكية لإحداث أثر إبداعي',
+        titleKey: 'services_mobile_title',
+        descKey: 'services_mobile_desc',
         link: '/services/mobile-apps'
     },
     {
         icon: <ShareIcon />,
-        title: 'إدارة منصات التواصل الاجتماعي',
-        description: 'حساباتك على منصات التواصل الاجتماعي تُساعدك في إظهار أعمالك وخدماتك للعملاء بشكل إبداعي ومبتكر',
+        titleKey: 'services_social_title',
+        descKey: 'services_social_desc',
         link: '/services/social-media'
     },
 ];
 
 const Services = ({ isFullPage }) => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     return (
-        <ServicesSection>
+        <ServicesSection dir={isArabic ? 'rtl' : 'ltr'}>
             <Container maxWidth="lg">
                 <Grid container spacing={4} alignItems="flex-start">
                     {!isFullPage && (
@@ -144,11 +148,11 @@ const Services = ({ isFullPage }) => {
                                     gap: 4,
                                     mt: '50px'
                                 }}>
-                                    <SectionTitle variant="h2">
-                                        خدماتنا
+                                    <SectionTitle variant="h2" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                                        {t('services_section_title', 'خدماتنا')}
                                     </SectionTitle>
-                                    <SectionDescription variant="body1">
-                                        إذا كنت تريد تطوير تطبيقات الهواتف الذكية، أوتصميم موقعك الإلكتروني، أو تصميم هويتك التجارية فقد وصلت للمكان المناسب! فنحن ننتج كل ما سبق بجودة رائعة و محتوى جذاب لا يمكن نسيانه.
+                                    <SectionDescription variant="body1" sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                                        {t('services_section_desc', 'إذا كنت تريد تطوير تطبيقات الهواتف الذكية، أوتصميم موقعك الإلكتروني، أو تصميم هويتك التجارية فقد وصلت للمكان المناسب! فنحن ننتج كل ما سبق بجودة رائعة و محتوى جذاب لا يمكن نسيانه.')}
                                     </SectionDescription>
                                     <AllServicesButton
                                         component={Link}
@@ -156,7 +160,7 @@ const Services = ({ isFullPage }) => {
                                         variant="outlined"
                                         endIcon={<ArrowBackIcon />}
                                     >
-                                        جميع الخدمات
+                                        {t('services_all_btn', 'جميع الخدمات')}
                                     </AllServicesButton>
                                 </Box>
                             </AnimatedSection>
@@ -171,17 +175,17 @@ const Services = ({ isFullPage }) => {
                                             <IconContainer>
                                                 {service.icon}
                                             </IconContainer>
-                                            <Typography gutterBottom variant="h5" component="h3" sx={{ fontWeight: 600 }}>
-                                                {service.title}
+                                            <Typography gutterBottom variant="h5" component="h3" sx={{ fontWeight: 600, textAlign: isArabic ? 'right' : 'left' }}>
+                                                {t(service.titleKey)}
                                             </Typography>
-                                            <Typography variant="body2" color="text.secondary" paragraph>
-                                                {service.description}
+                                            <Typography variant="body2" color="text.secondary" paragraph sx={{ textAlign: isArabic ? 'right' : 'left' }}>
+                                                {t(service.descKey)}
                                             </Typography>
                                             <ReadMoreButton
                                                 component={Link}
                                                 to={service.link}
                                             >
-                                                المزيد من القراءة
+                                                {t('services_readmore_btn', 'المزيد من القراءة')}
                                             </ReadMoreButton>
                                         </ServiceCardStyled>
                                     </AnimatedSection>

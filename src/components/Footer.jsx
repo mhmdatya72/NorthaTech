@@ -10,6 +10,7 @@ import XIcon from '@mui/icons-material/X'; // For Twitter
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { BehanceIcon } from './BehanceIcon'; // Assuming you have a BehanceIcon component or SVG
 import Logo from './Logo';
+import { useTranslation } from 'react-i18next';
 
 const ContactCTABox = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -21,7 +22,6 @@ const ContactCTABox = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: theme.spacing(4),
-    direction: 'rtl',
     marginTop: theme.spacing(-4),
     marginBottom: theme.spacing(4),
     maxWidth: '800px',
@@ -50,7 +50,7 @@ const FooterContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#000000',
     color: '#ffffff',
     padding: theme.spacing(4, 0, 0),
-    direction: 'rtl',
+    direction: theme.direction,
     position: 'relative',
     background: '#000000 !important',
     '& *': {
@@ -130,28 +130,32 @@ const CTAButton = styled(Button)(({ theme }) => ({
 }));
 
 const Footer = () => {
+    const { t, i18n } = useTranslation();
+    const isArabic = i18n.language === 'ar';
     return (
         <Box sx={{ backgroundColor: '#000000' }}>
-            <ContactCTABox>
+            <ContactCTABox dir={isArabic ? 'rtl' : 'ltr'}>
                 <CTAText>
-                    لا تتردد في الاتصال بنا <br /> اطلب خدمتك الان من فريق NorthaTech
+                    {t('cta')}
                 </CTAText>
                 <CTAButton
                     variant="contained"
                     startIcon={<ChatBubbleOutlineIcon />}
                     href="/contact"
                 >
-                    تواصل معنا
+                    {t('contact')}
                 </CTAButton>
             </ContactCTABox>
-            <FooterContainer>
+            <FooterContainer dir={isArabic ? 'rtl' : 'ltr'}>
                 <Container maxWidth="lg" sx={{ backgroundColor: '#000000' }}>
                     <Grid container spacing={2} sx={{ mt: 2 }}>
                         {/* NorthaTech / Logo Section */}
                         <Grid item xs={12} md={4}>
                             <Logo textColor="white" />
                             <Typography variant="body2" paragraph sx={{ mt: 3, mb: 3 }}>
-                                NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق.
+                                {i18n.language === 'ar'
+                                    ? 'NorthaTech هي شركة سعودية ملتزمة بتمكين رواد ورائدات الأعمال في المملكة العربية السعودية من خلال تقديم مجموعة شاملة من الخدمات والحلول في ميداني التقنية والتسويق.'
+                                    : 'NorthaTech is a Saudi company committed to empowering entrepreneurs in Saudi Arabia by providing a comprehensive range of services and solutions in technology and marketing.'}
                             </Typography>
                             <SocialIconsContainer>
                                 <IconButton href="#" target="_blank"><WhatsAppIcon /></IconButton>
@@ -160,31 +164,29 @@ const Footer = () => {
                                 <IconButton href="#" target="_blank"><XIcon /></IconButton>
                             </SocialIconsContainer>
                         </Grid>
-
                         {/* Quick Links Section */}
                         <Grid item xs={12} md={4}>
                             <SectionTitle>
-                                روابط سريعة
+                                {t('quick_links', 'روابط سريعة')}
                             </SectionTitle>
-                            <FooterLink href="/">الرئيسية</FooterLink>
-                            <FooterLink href="/about">عن NorthaTech</FooterLink>
-                            <FooterLink href="/services">الخدمات</FooterLink>
-                            <FooterLink href="/projects">الأعمال</FooterLink>
-                            <FooterLink href="/products">اكتشف المنتجات</FooterLink>
-                            <FooterLink href="/news">الأخبار</FooterLink>
-                            <FooterLink href="/careers">التوظيف</FooterLink>
-                            <FooterLink href="/contact">اتصل بنا</FooterLink>
+                            <FooterLink href="/">{t('home')}</FooterLink>
+                            <FooterLink href="/about">{t('about')}</FooterLink>
+                            <FooterLink href="/services">{t('services')}</FooterLink>
+                            <FooterLink href="/projects">{t('projects')}</FooterLink>
+                            <FooterLink href="/products">{t('products')}</FooterLink>
+                            <FooterLink href="/news">{t('news')}</FooterLink>
+                            <FooterLink href="/careers">{t('careers')}</FooterLink>
+                            <FooterLink href="/contact">{t('contact')}</FooterLink>
                         </Grid>
-
                         {/* Contact Us Section */}
                         <Grid item xs={12} md={4}>
                             <SectionTitle>
-                                تواصل معنا
+                                {t('contact')}
                             </SectionTitle>
                             <ContactInfoItem>
                                 <LocationOnIcon />
                                 <Typography variant="body2">
-                                    الرياض - حي السليمانية - طريق الملك عبدالعزيز
+                                    {i18n.language === 'ar' ? 'الرياض - حي السليمانية - طريق الملك عبدالعزيز' : 'Riyadh - Al-Sulaimaniah - King Abdulaziz Road'}
                                 </Typography>
                             </ContactInfoItem>
                             <ContactInfoItem>
@@ -202,7 +204,7 @@ const Footer = () => {
                             <ContactInfoItem>
                                 <EmailIcon />
                                 <Typography variant="body2">
-                                    info@wothoq.co
+                                    info@northatech.sa
                                 </Typography>
                             </ContactInfoItem>
                         </Grid>
