@@ -7,6 +7,9 @@ const HeroSection = styled(Box)(({ theme }) => ({
     color: 'white',
     padding: theme.spacing(15, 0),
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+        padding: theme.spacing(6, 0),
+    },
 }));
 
 const ServiceCard = styled(Card)(({ theme }) => ({
@@ -16,6 +19,21 @@ const ServiceCard = styled(Card)(({ theme }) => ({
     transition: 'transform 0.2s',
     '&:hover': {
         transform: 'translateY(-5px)',
+    },
+    [theme.breakpoints.down('sm')]: {
+        minWidth: 0,
+        width: '100%',
+        margin: '0 auto',
+    },
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+    fontSize: '2.5rem',
+    fontWeight: 700,
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.5rem',
+        marginBottom: theme.spacing(2),
     },
 }));
 
@@ -39,37 +57,37 @@ const Home = () => {
     return (
         <Box dir={isArabic ? 'rtl' : 'ltr'}>
             <HeroSection>
-                <Container>
-                    <Typography variant="h2" component="h1" gutterBottom>
+                <Container sx={{ px: { xs: 2, sm: 4 } }}>
+                    <SectionTitle variant="h2" component="h1" gutterBottom>
                         {t('home_hero_title', 'أهلاً بك في NorthaTech')}
-                    </Typography>
-                    <Typography variant="h5" paragraph>
+                    </SectionTitle>
+                    <Typography variant="h5" paragraph sx={{ fontSize: { xs: '1.1rem', sm: '1.5rem' } }}>
                         {t('home_hero_subtitle', 'شريكك الموثوق في عالم التقنية والرقمنة')}
                     </Typography>
                     <Button
                         variant="contained"
                         color="secondary"
                         size="large"
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 2, fontSize: { xs: '1rem', sm: '1.2rem' }, px: { xs: 2, sm: 4 }, py: { xs: 1, sm: 2 } }}
                     >
                         {t('home_hero_cta', 'تواصل معنا')}
                     </Button>
                 </Container>
             </HeroSection>
 
-            <Container sx={{ py: 8 }}>
-                <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
+            <Container sx={{ py: { xs: 4, sm: 8 }, px: { xs: 2, sm: 4 } }}>
+                <SectionTitle variant="h3" component="h2" textAlign="center" gutterBottom>
                     {t('home_services_title', 'خدماتنا')}
-                </Typography>
-                <Grid container spacing={4} sx={{ mt: 2 }}>
+                </SectionTitle>
+                <Grid container spacing={{ xs: 2, sm: 4 }} sx={{ mt: 2 }}>
                     {services.map((service, index) => (
                         <Grid item xs={12} md={4} key={index}>
                             <ServiceCard>
                                 <CardContent>
-                                    <Typography variant="h5" component="h3" gutterBottom>
+                                    <Typography variant="h5" component="h3" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.3rem' } }}>
                                         {service.title}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary">
+                                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.95rem', sm: '1.1rem' } }}>
                                         {service.description}
                                     </Typography>
                                 </CardContent>
@@ -79,33 +97,33 @@ const Home = () => {
                 </Grid>
             </Container>
 
-            <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
-                <Container>
-                    <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
+            <Box sx={{ bgcolor: 'grey.100', py: { xs: 4, sm: 8 }, px: { xs: 0 } }}>
+                <Container sx={{ px: { xs: 2, sm: 4 } }}>
+                    <SectionTitle variant="h3" component="h2" textAlign="center" gutterBottom>
                         {t('home_whyus_title', 'لماذا تختارنا؟')}
-                    </Typography>
-                    <Grid container spacing={4} sx={{ mt: 2 }}>
+                    </SectionTitle>
+                    <Grid container spacing={{ xs: 2, sm: 4 }} sx={{ mt: 2 }}>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}>
                                 {t('home_whyus_experience_title', 'خبرة واسعة')}
                             </Typography>
-                            <Typography>
+                            <Typography sx={{ fontSize: { xs: '0.95rem', sm: '1.1rem' } }}>
                                 {t('home_whyus_experience_desc', 'فريق عمل محترف مع سنوات من الخبرة في مجال التقنية')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}>
                                 {t('home_whyus_innovative_title', 'حلول مبتكرة')}
                             </Typography>
-                            <Typography>
+                            <Typography sx={{ fontSize: { xs: '0.95rem', sm: '1.1rem' } }}>
                                 {t('home_whyus_innovative_desc', 'نقدم حلولاً تقنية مبتكرة تناسب احتياجات عملك')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}>
                                 {t('home_whyus_support_title', 'دعم مستمر')}
                             </Typography>
-                            <Typography>
+                            <Typography sx={{ fontSize: { xs: '0.95rem', sm: '1.1rem' } }}>
                                 {t('home_whyus_support_desc', 'نقدم دعماً فنياً مستمراً لضمان نجاح مشروعك')}
                             </Typography>
                         </Grid>

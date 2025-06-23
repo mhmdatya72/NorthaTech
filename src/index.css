@@ -20,3 +20,31 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+@media (max-width: 740px) and (min-width: 360px) {
+  html {
+    font-size: 14px;
+  }
+  body {
+    padding: 0 4px;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  /* يمكنك إضافة قواعد عامة أخرى هنا حسب الحاجة */
+}
+
+@media (max-width: 1200px) {
+  .MuiContainer-root {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}

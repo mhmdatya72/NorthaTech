@@ -17,6 +17,9 @@ const StyledAppBar = styled(AppBar)(({ theme, scrolled }) => ({
     transition: 'all 0.3s ease-in-out',
     backdropFilter: scrolled ? 'blur(8px)' : 'none',
     height: '80px',
+    [theme.breakpoints.down('sm')]: {
+        height: '56px',
+    },
     '&:hover': {
         boxShadow: scrolled
             ? '0 6px 25px rgba(0, 0, 0, 0.15), 0 3px 15px rgba(0, 0, 0, 0.1)'
@@ -39,6 +42,10 @@ const NavLink = styled(Button)(({ theme, active, scrolled }) => ({
         backgroundColor: 'transparent',
         color: theme.palette.primary.main,
     },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.95rem',
+        padding: '2px 8px',
+    },
 }));
 
 const NumberLabel = styled('span')(({ theme, active, scrolled }) => ({
@@ -55,6 +62,11 @@ const ContactButton = styled(Button)(({ theme }) => ({
     fontSize: '1.1rem',
     '&:hover': {
         backgroundColor: theme.palette.primary.dark,
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.95rem',
+        padding: '4px 10px',
+        minWidth: '32px',
     },
 }));
 
@@ -170,17 +182,25 @@ const Navbar = () => {
             <StyledAppBar position="fixed" scrolled={scrolled}>
                 <Toolbar dir={dir} sx={{
                     justifyContent: 'space-between',
-                    padding: '0 50px',
+                    padding: { xs: '0 2px', sm: '0 12px', md: '0 50px' },
                     height: '100%',
-                    minHeight: '80px',
+                    minHeight: { xs: '48px', sm: '56px', md: '80px' },
+                    overflow: { xs: 'hidden', sm: 'visible' },
                     '& .MuiButton-root': {
                         minWidth: 'auto',
                     }
                 }}>
-                    <Logo />
+                    <Box sx={{
+                        minWidth: { xs: 80, sm: 120 },
+                        maxWidth: { xs: 100, sm: 160 },
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}>
+                        <Logo />
+                    </Box>
 
                     <Box sx={{
-                        display: { xs: 'none', md: 'flex' },
+                        display: { xs: 'none', xl: 'flex' },
                         alignItems: 'center',
                         direction: dir,
                         gap: '4px',
@@ -210,16 +230,17 @@ const Navbar = () => {
                             component={RouterLink}
                             to="/contact"
                             variant="contained"
-                            startIcon={<PhoneIcon sx={{ fontSize: '1.1rem' }} />}
+                            startIcon={<PhoneIcon sx={{ fontSize: { xs: '1rem', sm: '1.1rem' } }} />}
                         >
                             {t('contact')}
                         </ContactButton>
                     </Box>
 
                     <Box sx={{
-                        display: { xs: 'flex', md: 'none' },
+                        display: { xs: 'flex', xl: 'none' },
                         height: '100%',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        zIndex: 1201,
                     }}>
                         <IconButton
                             color="inherit"
@@ -229,8 +250,9 @@ const Navbar = () => {
                             sx={{
                                 color: theme => theme.palette.text.primary,
                                 '& .MuiSvgIcon-root': {
-                                    fontSize: '1.6rem'
-                                }
+                                    fontSize: { xs: '1.3rem', sm: '1.6rem' }
+                                },
+                                p: { xs: 0.2, sm: 1 }
                             }}
                         >
                             <MenuIcon />
@@ -249,14 +271,28 @@ const Navbar = () => {
                 sx={{
                     '& .MuiDrawer-paper': {
                         boxSizing: 'border-box',
-                        width: 250,
+                        width: { xs: 200, sm: 250 },
                         direction: 'rtl',
                         backgroundColor: theme => theme.palette.background.paper,
                         color: theme => theme.palette.text.primary,
+                        p: { xs: 1, sm: 2 },
                     },
                 }}
             >
-                {drawer}
+                <List sx={{
+                    pt: { xs: 1, sm: 2 },
+                    pb: { xs: 1, sm: 2 },
+                    '& .MuiListItem-root': {
+                        mb: { xs: 0.5, sm: 1 },
+                        borderRadius: '8px',
+                        px: { xs: 1, sm: 2 },
+                    },
+                    '& .MuiListItemText-root span': {
+                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                    }
+                }}>
+                    {drawer}
+                </List>
             </Drawer>
         </>
     );
