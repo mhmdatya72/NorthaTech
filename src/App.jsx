@@ -41,12 +41,26 @@ import Ecommerce from './pages/products/Ecommerce';
 import CMS from './pages/products/CMS';
 import ELearning from './pages/products/ELearning';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function AppContent() {
     const location = useLocation();
     const isHomePage = location.pathname === '/';
     const { t, i18n } = useTranslation();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        document.body.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const getPageTitle = () => {
         switch (location.pathname) {
@@ -101,13 +115,9 @@ function AppContent() {
         }
     };
 
-    useEffect(() => {
-        document.body.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-    }, [i18n.language]);
-
     return (
         <>
-            <Navbar />
+            <Navbar scrolled={scrolled} />
             <ScrollTop />
             {!isHomePage && <PageHeader title={getPageTitle()} />}
             <Routes>

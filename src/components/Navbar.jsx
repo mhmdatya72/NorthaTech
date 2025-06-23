@@ -8,40 +8,44 @@ import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
 
 const StyledAppBar = styled(AppBar)(({ theme, scrolled }) => ({
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: scrolled
+        ? 'rgba(255, 255, 255, 0.95)'
+        : 'transparent',
     boxShadow: scrolled
         ? '0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.05)'
-        : '0 2px 10px rgba(0, 0, 0, 0.05)',
+        : 'none',
     transition: 'all 0.3s ease-in-out',
     backdropFilter: scrolled ? 'blur(8px)' : 'none',
     height: '80px',
     '&:hover': {
         boxShadow: scrolled
             ? '0 6px 25px rgba(0, 0, 0, 0.15), 0 3px 15px rgba(0, 0, 0, 0.1)'
-            : '0 4px 15px rgba(0, 0, 0, 0.08)',
+            : 'none',
     },
 }));
 
-const NavLink = styled(Button)(({ theme, active }) => ({
-    color: active ? theme.palette.primary.main : theme.palette.text.primary,
+const NavLink = styled(Button)(({ theme, active, scrolled }) => ({
+    color: '#111',
     margin: '0 4px',
-    fontWeight: active ? 600 : 400,
-    fontSize: '0.95rem',
+    fontWeight: 700,
+    fontSize: '1.05rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: '4px 16px',
+    letterSpacing: '0.5px',
+    transition: 'color 0.2s',
     '&:hover': {
         backgroundColor: 'transparent',
         color: theme.palette.primary.main,
     },
 }));
 
-const NumberLabel = styled('span')(({ theme, active }) => ({
+const NumberLabel = styled('span')(({ theme, active, scrolled }) => ({
     fontSize: '0.7rem',
-    color: active ? theme.palette.primary.main : theme.palette.text.primary,
+    color: '#111',
     marginBottom: '2px',
-    fontWeight: 600,
+    fontWeight: 700,
 }));
 
 const ContactButton = styled(Button)(({ theme }) => ({
@@ -153,8 +157,9 @@ const Navbar = () => {
                                 component={RouterLink}
                                 to={item.path}
                                 active={location.pathname === item.path ? 1 : 0}
+                                scrolled={scrolled}
                             >
-                                <NumberLabel active={location.pathname === item.path ? 1 : 0}>
+                                <NumberLabel active={location.pathname === item.path ? 1 : 0} scrolled={scrolled}>
                                     {item.number}
                                 </NumberLabel>
                                 {t(item.name === 'عن وثوق' ? 'about' :
